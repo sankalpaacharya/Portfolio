@@ -1,0 +1,24 @@
+---
+const { title = "sanku", description = "Sankalpa Acharya" } = Astro.props;
+import "@styles/base.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null; this.rel='stylesheet';"
+      crossorigin
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+  </body>
+</html>
