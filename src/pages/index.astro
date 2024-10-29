@@ -1,5 +1,14 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Prose from "../components/Prose.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("blogs", "post1");
+const { Content } = await entry.render();
 ---
 
-<MainLayout> asdasdsad </MainLayout>
+<MainLayout>
+  <Prose>
+    <Content />
+  </Prose>
+</MainLayout>

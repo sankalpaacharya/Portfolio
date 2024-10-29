@@ -18,7 +18,11 @@ import "@styles/base.css";
     />
     <title>{title}</title>
   </head>
-  <body>
-    <h1>Astro</h1>
+  <body class="min-h-full scroll">
+    <main
+      class="min-h-screen pt-4 px-5 sm:grid sm:grid-cols-2 md:grid-cols-3 md:px-6 max-w-12xl mx-auto"
+    >
+      <slot />
+    </main>
   </body>
 </html>
