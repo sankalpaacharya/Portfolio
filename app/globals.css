@@ -19,8 +19,19 @@
   }
 }
 
+.circle-gradient{ 
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.3), rgba(30, 30, 30, 0) 90%);
+  height: 30rem;
+  width: 30rem;
+  filter: blur(10rem);
+  z-index: -1;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
