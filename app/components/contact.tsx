@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
-type Props = {};
 
-export default function Contact({}: Props) {
+export default function Contact() {
   return (
     <div className="mt-20 space-y-3">
       <h2 className="text-3xl font-semibold">Contact</h2>
