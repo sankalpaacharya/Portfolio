@@ -10,28 +10,23 @@ export default function About() {
   const socialLinks = [
     {
       name: "Twitter",
-      url: "https://twitter.com/sanku",
+      url: "https://twitter.com/sankalpa_02",
       icon: <FaTwitter className="text-white text-lg" />,
     },
     {
       name: "GitHub",
-      url: "https://github.com/sanku",
+      url: "https://github.com/sankalpaacharya",
       icon: <FaGithub className="text-white text-lg" />,
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/sanku",
+      url: "https://linkedin.com/in/sankalpa02",
       icon: <FaLinkedin className="text-white text-lg" />,
     },
     {
       name: "YouTube",
-      url: "https://youtube.com/@sanku",
+      url: "https://www.youtube.com/@sankalpa02",
       icon: <FaYoutube className="text-white text-lg" />,
-    },
-    {
-      name: "Dev.to",
-      url: "https://dev.to/sanku",
-      icon: <SiDevdotto className="text-white text-lg" />,
     },
   ];
 
