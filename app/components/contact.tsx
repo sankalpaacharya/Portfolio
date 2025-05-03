@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { CiLocationArrow1 } from "react-icons/ci";
 type Props = {};
 
 export default function Contact({}: Props) {
@@ -11,7 +10,7 @@ export default function Contact({}: Props) {
         You can send me over an e-mail on
         <Link
           href="mailto:sankalpaacharya01@gmail.com"
-          className="text-blue-400 hover:underline "
+          className="text-blue-400 hover:underline"
         >
           sankalpaacharya01@gmail.com
         </Link>
