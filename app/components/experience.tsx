@@ -1,9 +1,27 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Experience() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if viewport is mobile on component mount and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   // Animation variants for container
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -28,7 +46,7 @@ export default function Experience() {
       },
     },
     hover: {
-      scale: 1.03,
+      scale: isMobile ? 1.01 : 1.03, // Reduced hover effect on mobile
       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
       transition: { type: "spring", stiffness: 400, damping: 10 },
     },
@@ -59,9 +77,11 @@ export default function Experience() {
   };
 
   return (
-    <section className="my-20">
+    <section className="my-12 md:my-20 px-4 md:px-0 w-full max-w-2xl mx-auto">
       <motion.h2
-        className="text-4xl font-bold mb-8"
+        className={`${
+          isMobile ? "text-3xl" : "text-4xl"
+        } font-bold mb-6 md:mb-8`}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -70,14 +90,14 @@ export default function Experience() {
       </motion.h2>
 
       <motion.div
-        className="space-y-6"
+        className="space-y-4 md:space-y-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Unstuck Experience */}
         <motion.div
-          className="bg-gray-500/10 bg-opacity-40 rounded-xl p-6 relative overflow-hidden"
+          className="bg-gray-500/10 bg-opacity-40 rounded-xl p-4 md:p-6 relative overflow-hidden"
           variants={cardVariants}
           whileHover="hover"
         >
@@ -88,36 +108,39 @@ export default function Experience() {
             transition={{ duration: 0.3 }}
           />
 
-          <div className="flex items-center gap-4 relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4 relative z-10">
             <motion.div
-              className="flex-shrink-0 w-12 h-12 rounded-md overflow-hidden bg-gray-800 flex items-center justify-center"
+              className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-md overflow-hidden bg-gray-800 flex items-center justify-center"
               variants={logoVariants}
               whileHover="hover"
             >
               <Image
                 src="/images/unstuck.png"
                 alt="Unstuck Logo"
-                width={48}
-                height={48}
+                width={isMobile ? 40 : 48}
+                height={isMobile ? 40 : 48}
                 className="object-contain"
               />
             </motion.div>
             <div className="flex-grow">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
                 <motion.h3
-                  className="text-xl font-semibold"
+                  className="text-lg md:text-xl font-semibold"
                   variants={textVariants}
                 >
                   Full Stack AI Developer
                 </motion.h3>
                 <motion.span
-                  className="text-gray-400 text-sm md:text-base"
+                  className="text-gray-400 text-xs md:text-sm"
                   variants={textVariants}
                 >
                   San Francisco, CA
                 </motion.span>
               </div>
-              <motion.h4 className="text-blue-400 mt-1" variants={textVariants}>
+              <motion.h4
+                className="text-blue-400 text-sm md:text-base mt-1"
+                variants={textVariants}
+              >
                 Unstuck
               </motion.h4>
             </div>
@@ -126,7 +149,7 @@ export default function Experience() {
 
         {/* NOX Experience */}
         <motion.div
-          className="bg-gray-500/10 bg-opacity-40 rounded-xl p-6 relative overflow-hidden"
+          className="bg-gray-500/10 bg-opacity-40 rounded-xl p-4 md:p-6 relative overflow-hidden"
           variants={cardVariants}
           whileHover="hover"
         >
@@ -138,36 +161,39 @@ export default function Experience() {
             transition={{ duration: 0.3 }}
           />
 
-          <div className="flex items-center gap-4 relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4 relative z-10">
             <motion.div
-              className="flex-shrink-0 w-12 h-12 rounded-md overflow-hidden bg-gray-800 flex items-center justify-center"
+              className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-md overflow-hidden bg-gray-800 flex items-center justify-center"
               variants={logoVariants}
               whileHover="hover"
             >
               <Image
                 src="/images/nox.png"
                 alt="NOX Logo"
-                width={48}
-                height={48}
+                width={isMobile ? 40 : 48}
+                height={isMobile ? 40 : 48}
                 className="object-contain"
               />
             </motion.div>
             <div className="flex-grow">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
                 <motion.h3
-                  className="text-xl font-semibold"
+                  className="text-lg md:text-xl font-semibold"
                   variants={textVariants}
                 >
                   Full Stack Developer
                 </motion.h3>
                 <motion.span
-                  className="text-gray-400 text-sm md:text-base"
+                  className="text-gray-400 text-xs md:text-sm"
                   variants={textVariants}
                 >
                   San Francisco, CA
                 </motion.span>
               </div>
-              <motion.h4 className="text-blue-400 mt-1" variants={textVariants}>
+              <motion.h4
+                className="text-blue-400 text-sm md:text-base mt-1"
+                variants={textVariants}
+              >
                 NOX • OpenAI-backed
               </motion.h4>
             </div>

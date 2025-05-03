@@ -1,12 +1,29 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdVerified } from "react-icons/md";
 import { FaTwitter, FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { SiDevdotto } from "react-icons/si";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function About() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if viewport is mobile on component mount and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const socialLinks = [
     {
       name: "Twitter",
@@ -108,15 +125,17 @@ export default function About() {
 
   return (
     <motion.div
-      className="py-6 space-y-4 max-w-2xl"
+      className="px-4 py-6 space-y-4 mx-auto w-full max-w-2xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.div className="space-y-3">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <motion.h2
-            className="text-6xl font-bold text-white"
+            className={`${
+              isMobile ? "text-4xl" : "text-6xl"
+            } font-bold text-white`}
             variants={nameVariants}
           >
             Sankalpa Acharya
@@ -165,7 +184,7 @@ export default function About() {
       </motion.div>
 
       <motion.div
-        className="flex gap-3 pt-2 mt-5"
+        className="flex flex-wrap gap-3 pt-2 mt-5"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
