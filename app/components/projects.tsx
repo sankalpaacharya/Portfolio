@@ -11,18 +11,16 @@ export default function Projects() {
       <div className="space-y-3 flex gap-5 flex-col mt-5">
         <ProjectCard
           title="Weride.live"
-          projectUrl="https://weride.live"
           description="Making vehicle sharing easier and more comfortable for hostel students."
           imageUrl="/images/weride.png"
-          buttonLink="askldj"
+          buttonLink="https://weride.live"
           buttonText="Website"
         />
         <ProjectCard
-          projectUrl="https://repo-deleter.vercel.app/"
           title="Cleaner"
           description="An webapp to clean github repository so that you dont have to manually delete all of them"
           imageUrl="https://www.sankalpa.info.np/_astro/repo-deleter.Dq60gM2z_miB0p.webp"
-          buttonLink="askldj"
+          buttonLink="https://repo-deleter.vercel.app/"
           buttonText="Website"
         />
       </div>

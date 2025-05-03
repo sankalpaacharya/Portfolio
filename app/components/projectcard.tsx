@@ -9,7 +9,6 @@ interface ProjectCardProps {
   imageUrl: string;
   buttonText: string;
   buttonLink: string;
-  projectUrl: string;
 }
 
 export default function ProjectCard({
@@ -18,7 +17,6 @@ export default function ProjectCard({
   imageUrl,
   buttonText,
   buttonLink,
-  projectUrl, // Added to props
 }: ProjectCardProps) {
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -99,39 +97,14 @@ export default function ProjectCard({
     },
   };
 
-  // Wrapper component to handle conditional linking
-  const CardWrapper = ({ children }: { children: React.ReactNode }) => {
-    if (projectUrl) {
-      return (
-        <Link href={projectUrl} passHref>
-          <motion.div
-            className="bg-[#12100f]/70 rounded-2xl shadow-xl overflow-hidden border border-neutral-800 cursor-pointer"
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover="hover"
-          >
-            {children}
-          </motion.div>
-        </Link>
-      );
-    }
-
-    return (
-      <motion.div
-        className="bg-[#12100f]/70 rounded-2xl shadow-xl overflow-hidden border border-neutral-800"
-        variants={cardVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover="hover"
-      >
-        {children}
-      </motion.div>
-    );
-  };
-
   return (
-    <CardWrapper>
+    <motion.div
+      className="bg-[#12100f]/70 rounded-2xl shadow-xl overflow-hidden border border-neutral-800"
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover="hover"
+    >
       <div className="relative overflow-hidden">
         <motion.img
           src={imageUrl}
@@ -142,6 +115,7 @@ export default function ProjectCard({
           animate="visible"
           whileHover="hover"
         />
+
         {/* Gradient overlay on hover with glow effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0"
@@ -153,6 +127,7 @@ export default function ProjectCard({
           }}
           transition={{ duration: 0.4 }}
         />
+
         <motion.a
           href={buttonLink}
           target="_blank"
@@ -166,6 +141,7 @@ export default function ProjectCard({
           {buttonText}
         </motion.a>
       </div>
+
       <motion.div
         className="p-4"
         variants={textContainerVariants}
@@ -178,20 +154,14 @@ export default function ProjectCard({
         >
           {title}
         </motion.h3>
+
         <motion.p
           className="text-sm text-gray-400 mt-1"
           variants={textItemVariants}
         >
           {description}
         </motion.p>
-        {projectUrl && (
-          <motion.div className="mt-2" variants={textItemVariants}>
-            <span className="text-xs text-blue-400 hover:text-blue-300">
-              View project details
-            </span>
-          </motion.div>
-        )}
       </motion.div>
-    </CardWrapper>
+    </motion.div>
   );
 }
