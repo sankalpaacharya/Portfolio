@@ -1,9 +1,7 @@
 import React from "react";
 import ProjectCard from "./projectcard";
 
-type Props = {};
-
-export default function Projects({}: Props) {
+export default function Projects() {
   return (
     <div className="mt-20">
       <h2 className="text-3xl text-shadow-lg font-bold text-gray-300">
