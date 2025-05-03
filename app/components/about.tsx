@@ -154,7 +154,10 @@ export default function About() {
           Skilled in React, Golang, and Linux systems. I believe in creating
           solutions that are fast, reliable, and built to make a difference.
           Whenever I feel like to share my knowledge I write{" "}
-          <Link className="text-blue-400" href={""}>
+          <Link
+            className="text-blue-400"
+            href={"https://blog.sankalpa.info.np"}
+          >
             @blogs
           </Link>
           .
