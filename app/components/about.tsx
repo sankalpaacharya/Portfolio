@@ -76,7 +76,7 @@ export default function About() {
 
   const socialIconVariants = {
     hidden: { scale: 0, opacity: 0 },
-    visible: (i: any) => ({
+    visible: (i: number) => ({
       scale: 1,
       opacity: 1,
       transition: {
