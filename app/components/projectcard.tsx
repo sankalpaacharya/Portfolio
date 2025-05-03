@@ -8,8 +8,8 @@ interface ProjectCardProps {
   description: string;
   imageUrl: string;
   buttonText: string;
-  projectUrl: string;
   buttonLink: string;
+  projectUrl: string;
 }
 
 export default function ProjectCard({
@@ -18,7 +18,7 @@ export default function ProjectCard({
   imageUrl,
   buttonText,
   buttonLink,
-  projectUrl,
+  projectUrl, // Added to props
 }: ProjectCardProps) {
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -99,8 +99,25 @@ export default function ProjectCard({
     },
   };
 
-  return (
-    <Link href={projectUrl}>
+  // Wrapper component to handle conditional linking
+  const CardWrapper = ({ children }: { children: React.ReactNode }) => {
+    if (projectUrl) {
+      return (
+        <Link href={projectUrl} passHref>
+          <motion.div
+            className="bg-[#12100f]/70 rounded-2xl shadow-xl overflow-hidden border border-neutral-800 cursor-pointer"
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+          >
+            {children}
+          </motion.div>
+        </Link>
+      );
+    }
+
+    return (
       <motion.div
         className="bg-[#12100f]/70 rounded-2xl shadow-xl overflow-hidden border border-neutral-800"
         variants={cardVariants}
@@ -108,64 +125,73 @@ export default function ProjectCard({
         animate="visible"
         whileHover="hover"
       >
-        <div className="relative overflow-hidden">
-          <motion.img
-            src={imageUrl}
-            alt={title}
-            className="w-full object-cover rounded-t-2xl"
-            variants={imageVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover="hover"
-          />
+        {children}
+      </motion.div>
+    );
+  };
 
-          {/* Gradient overlay on hover with glow effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0"
-            initial={{ opacity: 0 }}
-            whileHover={{
-              opacity: 1,
-              background:
-                "linear-gradient(to top, rgba(0,0,0,0.7), rgba(25,25,25,0.3), transparent)",
-            }}
-            transition={{ duration: 0.4 }}
-          />
-
-          <motion.a
-            href={buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-4 right-4 bg-white text-black text-xs font-semibold py-1 px-3 rounded-full"
-            variants={buttonVariants}
-            initial="initial"
-            whileHover="hover"
-            whileTap="tap"
-          >
-            {buttonText}
-          </motion.a>
-        </div>
-
-        <motion.div
-          className="p-4"
-          variants={textContainerVariants}
+  return (
+    <CardWrapper>
+      <div className="relative overflow-hidden">
+        <motion.img
+          src={imageUrl}
+          alt={title}
+          className="w-full object-cover rounded-t-2xl"
+          variants={imageVariants}
           initial="hidden"
           animate="visible"
+          whileHover="hover"
+        />
+        {/* Gradient overlay on hover with glow effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0"
+          initial={{ opacity: 0 }}
+          whileHover={{
+            opacity: 1,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.7), rgba(25,25,25,0.3), transparent)",
+          }}
+          transition={{ duration: 0.4 }}
+        />
+        <motion.a
+          href={buttonLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-4 right-4 bg-white text-black text-xs font-semibold py-1 px-3 rounded-full"
+          variants={buttonVariants}
+          initial="initial"
+          whileHover="hover"
+          whileTap="tap"
         >
-          <motion.h3
-            className="text-white text-lg font-semibold"
-            variants={textItemVariants}
-          >
-            {title}
-          </motion.h3>
-
-          <motion.p
-            className="text-sm text-gray-400 mt-1"
-            variants={textItemVariants}
-          >
-            {description}
-          </motion.p>
-        </motion.div>
+          {buttonText}
+        </motion.a>
+      </div>
+      <motion.div
+        className="p-4"
+        variants={textContainerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h3
+          className="text-white text-lg font-semibold"
+          variants={textItemVariants}
+        >
+          {title}
+        </motion.h3>
+        <motion.p
+          className="text-sm text-gray-400 mt-1"
+          variants={textItemVariants}
+        >
+          {description}
+        </motion.p>
+        {projectUrl && (
+          <motion.div className="mt-2" variants={textItemVariants}>
+            <span className="text-xs text-blue-400 hover:text-blue-300">
+              View project details
+            </span>
+          </motion.div>
+        )}
       </motion.div>
-    </Link>
+    </CardWrapper>
   );
 }
