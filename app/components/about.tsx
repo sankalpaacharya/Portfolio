@@ -148,7 +148,7 @@ export default function About() {
         <motion.p className="text-sm text-gray-400" variants={itemVariants}>
           React • Linux • Golang • building{" "}
           <Link
-            href="https://twitter.com/sanku"
+            href="https://twitter.com/sankalpa_02"
             className="text-blue-400 hover:underline"
           >
             @sanku
