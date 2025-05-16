@@ -19,7 +19,7 @@ export default function Projects() {
         <ProjectCard
           title="Cleaner"
           description="An webapp to clean github repository so that you dont have to manually delete all of them"
-          imageUrl="https://www.sankalpa.info.np/_astro/repo-deleter.Dq60gM2z_miB0p.webp"
+          imageUrl="/images/repodeleter.png"
           buttonLink="https://repo-deleter.vercel.app/"
           buttonText="Website"
         />
