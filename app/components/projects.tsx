@@ -10,6 +10,13 @@ export default function Projects() {
       <div className="circle-gradient mt-10" />
       <div className="space-y-3 flex gap-5 flex-col mt-5">
         <ProjectCard
+          title="Still"
+          description="Your AI that tracks spending and roasts your unnecessary expenses."
+          imageUrl="/images/still.png"
+          buttonLink="https://fixyourspend.vercel.app"
+          buttonText="Website"
+        />
+        <ProjectCard
           title="Weride.live"
           description="Making vehicle sharing easier and more comfortable for hostel students."
           imageUrl="/images/weride.png"
