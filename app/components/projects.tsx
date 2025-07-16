@@ -24,6 +24,13 @@ export default function Projects() {
           buttonText="Website"
         />
         <ProjectCard
+          title="Shadcn Collection"
+          description="ShadCN UI doesn’t come with a code block component, so I built one!"
+          imageUrl="/images/shadcncollections.png"
+          buttonLink="https://shadcn-collections.vercel.app/"
+          buttonText="Website"
+        />
+        <ProjectCard
           title="Cleaner"
           description="An webapp to clean github repository so that you dont have to manually delete all of them"
           imageUrl="/images/repodeleter.png"
