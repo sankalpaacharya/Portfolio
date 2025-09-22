@@ -168,18 +168,12 @@ export default function About() {
             },
           }}
         >
-          21 year old dev who's passionate about{" "}
+          21 year old dev who&apos;s passionate about{" "}
           <span className="text-primary">Development</span> and{" "}
           <span className="text-primary">Security.</span> I love building
           applications that people use to build applications
-          {/* <Link
-            className="text-blue-400"
-            href={"https://blog.sankalpa.info.np"}
-          >
-            @blogs
-          </Link> */}
-          .
         </motion.p>
+
         <p className="text-muted-foreground text-sm">
           In my free time, you can find me playing{" "}
           <a href="https://chess.com/" className="text-sm text-blue-400">

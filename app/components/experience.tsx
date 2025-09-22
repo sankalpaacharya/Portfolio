@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface ExperienceData {
   id: string;
@@ -17,9 +17,9 @@ interface ExperienceData {
 interface ExperienceCardProps {
   experience: ExperienceData;
   isMobile: boolean;
-  cardVariants: any;
-  logoVariants: any;
-  textVariants: any;
+  cardVariants: Variants;
+  logoVariants: Variants;
+  textVariants: Variants;
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
@@ -116,18 +116,13 @@ export default function Experience() {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Initial check
     checkMobile();
-
-    // Add resize listener
     window.addEventListener("resize", checkMobile);
-
-    // Clean up
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Animation variants for container
-  const containerVariants = {
+  // Animation variants
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -137,8 +132,7 @@ export default function Experience() {
     },
   };
 
-  // Animation variants for each experience card
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -150,14 +144,13 @@ export default function Experience() {
       },
     },
     hover: {
-      scale: isMobile ? 1.01 : 1.03, // Reduced hover effect on mobile
+      scale: isMobile ? 1.01 : 1.03,
       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
       transition: { type: "spring", stiffness: 400, damping: 10 },
     },
   };
 
-  // Animation variants for the logo
-  const logoVariants = {
+  const logoVariants: Variants = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,
@@ -170,8 +163,7 @@ export default function Experience() {
     },
   };
 
-  // Text reveal animation
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
