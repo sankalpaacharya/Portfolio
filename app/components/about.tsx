@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { MdVerified } from "react-icons/md";
 import { FaTwitter, FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
+import { Download } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 
 export default function About() {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check if viewport is mobile on component mount and window resize
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -144,8 +145,7 @@ export default function About() {
             <MdVerified className="text-blue-500 text-xl" />
           </motion.div>
         </div>
-
-        <motion.p className="text-sm text-gray-400" variants={itemVariants}>
+        {/* <motion.p className="text-sm text-gray-400" variants={itemVariants}>
           React • Linux • Golang • building{" "}
           <Link
             href="https://twitter.com/sankalpa_02"
@@ -153,10 +153,9 @@ export default function About() {
           >
             @sanku
           </Link>
-        </motion.p>
-
+        </motion.p> */}
         <motion.p
-          className="text-lg text-gray-300 leading-relaxed"
+          className="text-sm text-muted-foreground"
           variants={itemVariants}
           initial={{ opacity: 0, y: 20 }}
           animate={{
@@ -169,20 +168,50 @@ export default function About() {
             },
           }}
         >
-          3rd-year Computer Science student driven to build software that lasts.
-          Skilled in React, Golang, and Linux systems. I believe in creating
-          solutions that are fast, reliable, and built to make a difference.
-          Whenever I feel like to share my knowledge I write{" "}
-          <Link
+          21 year old dev who's passionate about{" "}
+          <span className="text-primary">Development</span> and{" "}
+          <span className="text-primary">Security.</span> I love building
+          applications that people use to build applications
+          {/* <Link
             className="text-blue-400"
             href={"https://blog.sankalpa.info.np"}
           >
             @blogs
-          </Link>
+          </Link> */}
           .
         </motion.p>
+        <p className="text-muted-foreground text-sm">
+          In my free time, you can find me playing{" "}
+          <a href="https://chess.com/" className="text-sm text-blue-400">
+            @chess
+          </a>{" "}
+          watching movies or trying something new either in tech or outside of
+          tech.
+        </p>
+        <p className="text-muted-foreground text-sm">
+          If you love reading blogs then I write{" "}
+          <a href="https://blog.sankalpa.info.np/" className="text-blue-400">
+            @blogs
+          </a>{" "}
+          sometimes related to security and web development or the fun things I
+          try.
+        </p>
       </motion.div>
-
+      <div className="mt-5 flex gap-3">
+        <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2">
+          <span className="relative flex size-3">
+            {" "}
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-400 opacity-75"></span>{" "}
+            <span className="relative inline-flex size-3 rounded-full bg-pink-500"></span>
+          </span>
+          Available for new opportunities
+        </div>
+        <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2">
+          <Download size={15} />
+          Download Resume
+        </div>
+      </div>
+      <Separator />
       <motion.div
         className="flex flex-wrap gap-3 pt-2 mt-5"
         initial="hidden"
@@ -194,12 +223,10 @@ export default function About() {
             key={social.name}
             custom={index}
             variants={socialIconVariants}
-            whileHover="hover"
-            whileTap="tap"
           >
             <Link
               href={social.url}
-              className="bg-gray-900 p-2.5 rounded-md hover:bg-gray-800 transition-colors inline-block"
+              className="p-2.5 rounded-md transition-colors inline-block bg-card"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.name}
