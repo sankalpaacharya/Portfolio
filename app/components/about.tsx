@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { MdVerified } from "react-icons/md";
 import { FaTwitter, FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
 import Link from "next/link";
 import { Download } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -45,6 +46,11 @@ export default function About() {
       name: "YouTube",
       url: "https://www.youtube.com/@sankalpa02",
       icon: <FaYoutube className="text-white text-lg" />,
+    },
+    {
+      name: "Email",
+      url: "https://www.youtube.com/@sankalpa02",
+      icon: <IoMdMail className="text-white text-lg" />,
     },
   ];
 
@@ -200,14 +206,21 @@ export default function About() {
           </span>
           Available for new opportunities
         </div>
-        <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2">
-          <Download size={15} />
-          Download Resume
-        </div>
+        <Link
+          target="_blank"
+          href={
+            "https://drive.google.com/file/d/1YTuLH9gSwHH5I3gHyQyBb7TzpG1mDAmA/view?usp=sharing"
+          }
+        >
+          <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2">
+            <Download size={15} />
+            Download Resume
+          </div>
+        </Link>
       </div>
       <Separator />
       <motion.div
-        className="flex flex-wrap gap-3 pt-2 mt-5"
+        className="flex gap-3 pt-2 mt-5"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -220,12 +233,14 @@ export default function About() {
           >
             <Link
               href={social.url}
-              className="p-2.5 rounded-md transition-colors inline-block bg-card"
+              className="p-2.5 rounded-md transition-colors bg-card text-xs inline-flex gap-2 items-center justify-center border"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.name}
             >
               {social.icon}
+
+              {social.name}
             </Link>
           </motion.div>
         ))}
