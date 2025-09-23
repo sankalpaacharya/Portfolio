@@ -156,7 +156,7 @@ export default function About() {
         </p>
       </motion.div>
       <div className="mt-5 flex gap-3 flex-col md:flex-row">
-        <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2">
+        <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2 justify-center">
           <span className="relative flex size-3">
             {" "}
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-400 opacity-75"></span>{" "}
@@ -170,7 +170,7 @@ export default function About() {
             "https://drive.google.com/file/d/1YTuLH9gSwHH5I3gHyQyBb7TzpG1mDAmA/view?usp=sharing"
           }
         >
-          <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2">
+          <div className="text-xs bg-card px-4 py-2 border flex rounded-md cursor-pointer items-center gap-2 justify-center">
             <Download size={15} />
             Download Resume
           </div>

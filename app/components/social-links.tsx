@@ -66,7 +66,7 @@ export default function SocialLinks() {
 
   return (
     <motion.div
-      className="flex gap-3 pt-2"
+      className="flex gap-3 pt-2 flex-wrap"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
