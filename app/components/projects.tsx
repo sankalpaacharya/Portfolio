@@ -8,7 +8,7 @@ export default function Projects() {
         Projects
       </h2>
       <div className="circle-gradient mt-10" />
-      <div className="space-y-3 flex gap-5 flex-col mt-5">
+      <div className="space-y-3 grid grid-cols-1 gap-5  mt-5">
         <ProjectCard
           title="Still"
           description="Your AI that tracks spending and roasts your unnecessary expenses."

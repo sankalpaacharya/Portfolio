@@ -173,7 +173,7 @@ export default function Experience() {
   };
 
   return (
-    <section className="my-12 md:my-20 px-4 md:px-0 w-full max-w-2xl mx-auto">
+    <section className="my-10 px-4 md:px-0 w-full max-w-2xl mx-auto">
       <motion.h2
         className={`${
           isMobile ? "text-3xl" : "text-4xl"

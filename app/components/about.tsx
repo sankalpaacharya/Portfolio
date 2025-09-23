@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { MdVerified } from "react-icons/md";
-import { FaTwitter, FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
 import Link from "next/link";
 import { Download } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
+import SocialLinks from "./social-links";
 
 export default function About() {
   const [isMobile, setIsMobile] = useState(false);
@@ -25,34 +24,6 @@ export default function About() {
     // Clean up
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-
-  const socialLinks = [
-    {
-      name: "Twitter",
-      url: "https://twitter.com/sankalpa_02",
-      icon: <FaTwitter className="text-white text-lg" />,
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/sankalpaacharya",
-      icon: <FaGithub className="text-white text-lg" />,
-    },
-    {
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/sankalpa02",
-      icon: <FaLinkedin className="text-white text-lg" />,
-    },
-    {
-      name: "YouTube",
-      url: "https://www.youtube.com/@sankalpa02",
-      icon: <FaYoutube className="text-white text-lg" />,
-    },
-    {
-      name: "Email",
-      url: "https://www.youtube.com/@sankalpa02",
-      icon: <IoMdMail className="text-white text-lg" />,
-    },
-  ];
 
   // Animation variants
   const containerVariants = {
@@ -91,30 +62,6 @@ export default function About() {
         duration: 0.7,
       },
     },
-  };
-
-  const socialIconVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: (i: number) => ({
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: 0.8 + i * 0.1,
-      },
-    }),
-    hover: {
-      scale: 1.2,
-      y: -5,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    tap: { scale: 0.9 },
   };
 
   const verifiedBadgeVariants = {
@@ -175,9 +122,20 @@ export default function About() {
           }}
         >
           21 year old dev who&apos;s passionate about{" "}
-          <span className="text-primary">Development</span> and{" "}
-          <span className="text-primary">Security.</span> I love building
-          applications that people use to build applications
+          <a
+            className="text-blue-400"
+            href="https://github.com/sankalpaacharya"
+          >
+            @Development
+          </a>{" "}
+          and{" "}
+          <a
+            className="text-blue-400"
+            href="https://blog.sankalpa.info.np/tags/security"
+          >
+            @Security
+          </a>
+          . I love building applications that people use to build applications
         </motion.p>
 
         <p className="text-muted-foreground text-sm">
@@ -219,32 +177,12 @@ export default function About() {
         </Link>
       </div>
       <Separator />
-      <motion.div
-        className="flex gap-3 pt-2 mt-5"
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-        {socialLinks.map((social, index) => (
-          <motion.div
-            key={social.name}
-            custom={index}
-            variants={socialIconVariants}
-          >
-            <Link
-              href={social.url}
-              className="p-2.5 rounded-md transition-colors bg-card text-xs inline-flex gap-2 items-center justify-center border"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.name}
-            >
-              {social.icon}
-
-              {social.name}
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+      <div className="text-sm mt-5 text-muted-foreground space-y-1">
+        <p>
+          How to contact me <span className="text-primary">digitally</span>
+        </p>
+        <SocialLinks />
+      </div>
     </motion.div>
   );
 }
