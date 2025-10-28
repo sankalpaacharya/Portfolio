@@ -23,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sen.variable}  antialiased`}>
+      <body
+        className={`${sen.variable}  antialiased bg-[url(/images/voyager-16.jpg)] bg-cover`}
+        // className={`${sen.variable}  antialiased bg-[url(/images/wallpaper.png)] bg-cover`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
