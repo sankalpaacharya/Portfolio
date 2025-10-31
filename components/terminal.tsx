@@ -19,20 +19,22 @@ function TerminalContent() {
       <TerminalBody className="bg-card h-[300px]">
         <TerminalBodyContent
           prompt={
-            <TerminalPrompt>
+            <TerminalPrompt className="font-mono text-sm flex items-center">
               <span className="text-secondary">sanku</span>
-              <span>@</span>
-              <span>archlinux</span>
-              <span></span>
+              <span className="text-muted-foreground">@</span>
+              <span className="text-primary">archlinux</span>
+              <span className="text-muted-foreground">$</span>
             </TerminalPrompt>
           }
         />
         <div className="flex gap-2">
-          <TerminalPrompt>
+          <TerminalPrompt className="font-mono text-sm flex items-center">
             <span className="text-secondary">sanku</span>
-            <span>@</span>
-            <span>archlinux</span>
+            <span className="text-muted-foreground">@</span>
+            <span className="text-primary">archlinux</span>
+            <span className="text-muted-foreground">$</span>
           </TerminalPrompt>
+
           <TerminalInput />
         </div>
       </TerminalBody>
