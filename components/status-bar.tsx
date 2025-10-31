@@ -31,7 +31,7 @@ export default function StatusBar() {
   ];
 
   return (
-    <div className="bg-card flex justify-between p-2 m-1 border border-amber-600 rounded shadow-xl">
+    <div className="bg-card flex justify-between p-2 m-1 border rounded shadow-xl text-xs">
       <div className="flex items-center gap-2">
         {numbers.map((num) => (
           <div
@@ -47,7 +47,7 @@ export default function StatusBar() {
         ))}
       </div>
 
-      <div className="flex items-center gap-4 text-sm text-[#bac2de]">
+      <div className="flex items-center gap-4 text-[#bac2de]">
         {actions.map(({ value, icon: Icon }, idx) => (
           <div
             key={idx}
