@@ -1,5 +1,6 @@
 import StatusBar from "@/components/status-bar";
 import { TerminalUI } from "@/components/terminal";
+import FileManager from "@/components/file-manager";
 
 export default function Page() {
   return (
@@ -8,7 +9,9 @@ export default function Page() {
       <div>
         <TerminalUI />
       </div>
-      <div className="m-10"></div>
+      <div className="m-10">
+        <FileManager />
+      </div>
     </div>
   );
 }
