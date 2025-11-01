@@ -3,6 +3,7 @@ import { useState } from "react";
 export type FileNode = {
   name: string;
   type: "file" | "folder";
+  src?: string
   children?: FileNode[];
 };
 

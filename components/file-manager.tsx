@@ -5,20 +5,28 @@ import { FolderItem, FileItem } from "@/components/chatcn/system/file-manager";
 const data: FileNode[] = [
   {
     type: "folder",
-    name: "home",
+    name: "projects",
     children: [
       {
         type: "folder",
-        name: "sanku",
+        name: "chatcn",
         children: [
-          { type: "file", name: "resume.pdf" },
+          { type: "file", name: "video.mp4" },
           { type: "file", name: "notes.txt" },
-          {
-            type: "folder",
-            name: "projects",
-            children: [{ type: "file", name: "fixyourspend.tsx" }],
-          },
         ],
+      },
+      {
+        type: "folder",
+        name: "bloomi",
+        children: [
+          { type: "file", name: "video.mp4" },
+          { type: "file", name: "preview.png", src: "/images/still.png" },
+        ],
+      },
+      {
+        type: "folder",
+        name: "weride",
+        children: [{ type: "file", name: "video.mp4" }],
       },
     ],
   },
@@ -50,7 +58,7 @@ export default function FileManager() {
         <button
           onClick={goBack}
           disabled={path.length <= 1}
-          className="px-3 py-1 text-sm bg-muted/10 text-muted-foreground disabled:opacity-50"
+          className="px-3 rounded py-1 text-sm text-muted-foreground hover:bg-muted/10 disabled:opacity-50"
         >
           ← Back
         </button>
@@ -70,6 +78,7 @@ export default function FileManager() {
             <FileItem
               key={item.name}
               name={item.name}
+              src={item.src}
               onClick={() => null}
               role="img"
               tabIndex={0}
