@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Play } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "../components/theme-provider";
 
-const sen = Play({
-  variable: "--font-sen",
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-
   weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sen.variable}  antialiased`}>
+      <body
+        className={`${jetbrains.className} antialiased bg-[url(/images/image.png)] bg-cover`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
