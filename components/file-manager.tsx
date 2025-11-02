@@ -11,22 +11,40 @@ const data: FileNode[] = [
         type: "folder",
         name: "chatcn",
         children: [
-          { type: "file", name: "video.mp4" },
-          { type: "file", name: "notes.txt" },
+          {
+            type: "file",
+            name: "preview.png",
+            thumbnail:
+              "https://www.sankalpa.info.np/images/shadcncollections.png",
+          },
         ],
       },
       {
         type: "folder",
         name: "bloomi",
         children: [
-          { type: "file", name: "video.mp4" },
-          { type: "file", name: "preview.png", src: "/images/still.png" },
+          {
+            type: "file",
+            name: "video.mp4",
+            thumbnail: "https://www.sankalpa.info.np/images/still.png",
+          },
+          {
+            type: "file",
+            name: "preview.png",
+            thumbnail: "https://www.sankalpa.info.np/images/still.png",
+          },
         ],
       },
       {
         type: "folder",
         name: "weride",
-        children: [{ type: "file", name: "video.mp4" }],
+        children: [
+          {
+            type: "file",
+            name: "preview.png",
+            thumbnail: "https://www.sankalpa.info.np/images/weride.png",
+          },
+        ],
       },
     ],
   },
@@ -37,7 +55,7 @@ export default function FileManager() {
     useFileManager(data);
 
   return (
-    <div className="p-6 space-y-6 mx-auto bg-card rounded border">
+    <div className="p-6 space-y-6 mx-auto bg-card border rounded">
       <div className="flex items-center text-sm text-muted-foreground">
         {path.map((folder, index) => (
           <div key={folder} className="flex items-center">
@@ -58,7 +76,7 @@ export default function FileManager() {
         <button
           onClick={goBack}
           disabled={path.length <= 1}
-          className="px-3 rounded py-1 text-sm text-muted-foreground hover:bg-muted/10 disabled:opacity-50"
+          className="px-3 py-1 border border-border rounded text-sm bg-muted/10 text-muted-foreground disabled:opacity-50"
         >
           ← Back
         </button>
@@ -71,7 +89,6 @@ export default function FileManager() {
               key={item.name}
               name={item.name}
               onClick={() => openFolder(item.name)}
-              role="button"
               tabIndex={0}
             />
           ) : (
@@ -80,7 +97,7 @@ export default function FileManager() {
               name={item.name}
               src={item.src}
               onClick={() => null}
-              role="img"
+              thumbnail={item.thumbnail}
               tabIndex={0}
             />
           )
