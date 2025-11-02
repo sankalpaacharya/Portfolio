@@ -87,7 +87,7 @@ type TerminalProps = {
 function getTerminalPositionClasses(state: TerminalState): string {
   switch (state) {
     case "maximize":
-      return "fixed inset-0 w-screen h-screen z-[9999] rounded-none text-sm";
+      return "fixed inset-0 w-screen h-screen z-[9999] rounded-none text-md";
     case "minimize":
       return "fixed bottom-3 left-1/2 -translate-x-1/2 h-auto z-[9999] cursor-pointer";
     case "normal":
@@ -194,7 +194,7 @@ export function TerminalInput() {
       onKeyDown={handleKeyDown}
       onChange={(e) => setInputValue(e.target.value)}
       value={inputValue}
-      className="flex-1 bg-transparent text-sm outline-none border-none caret-amber-300"
+      className="flex-1 bg-transparent text-md outline-none border-none caret-amber-300"
       type="text"
       autoFocus
     />
@@ -258,7 +258,7 @@ export function TerminalBodyContent({
             <span>{entry.command}</span>
           </div>
           {entry.output && entry.output !== "CLEAR" && (
-            <div className="text-sm">{entry.output}</div>
+            <div className="text-md">{entry.output}</div>
           )}
         </div>
       ))}

@@ -7,9 +7,10 @@ import {
   Clock,
   Calendar,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function StatusBar() {
-  const numbers = Array.from({ length: 9 }, (_, i) => i + 1);
+  const [active, setActive] = useState(1);
 
   const now = new Date();
   const time = now.toLocaleTimeString([], {
@@ -31,27 +32,42 @@ export default function StatusBar() {
   ];
 
   return (
-    <div className="bg-card flex justify-between p-2 m-1 border rounded shadow-xl text-xs">
-      <div className="flex items-center gap-2">
-        {numbers.map((num) => (
-          <div
+    <div className="bg-card flex justify-between p-2 mx-1 border rounded shadow-xl text-xs">
+      <div
+        className="flex items-center gap-2 relative"
+        style={
+          {
+            "--workspace-index": active - 1,
+          } as React.CSSProperties
+        }
+      >
+        <div
+          className="absolute inset-y-0 w-9 bg-primary/20 rounded-md transition-transform duration-300 ease-out"
+          style={{
+            transform: `translateX(calc(var(--workspace-index) * 2.75rem))`,
+          }}
+        />
+
+        {Array.from({ length: 9 }, (_, i) => i + 1).map((num) => (
+          <button
             key={num}
-            className={`px-3 py-1 rounded-md text-center transition-all duration-200 cursor-pointer ${
-              num === 1
-                ? "bg-[#cba6f7]/30 text-[#cba6f7] shadow-inner"
-                : "hover:bg-muted"
+            onClick={() => setActive(num)}
+            className={`relative z-10 w-9 py-1 cursor-pointer rounded-md transition-colors duration-200 ${
+              num === active
+                ? "text-primary font-medium"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
             {num}
-          </div>
+          </button>
         ))}
       </div>
 
-      <div className="flex items-center gap-4 text-[#bac2de]">
+      <div className="flex items-center gap-4 text-muted-foreground">
         {actions.map(({ value, icon: Icon }, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-1 hover:text-[#f5e0dc] transition-colors duration-200"
+            className="flex items-center gap-1 hover:text-foreground transition-colors duration-200"
           >
             <Icon className="size-4" />
             <span>{value}</span>

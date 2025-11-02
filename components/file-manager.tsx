@@ -48,6 +48,10 @@ const data: FileNode[] = [
       },
     ],
   },
+  {
+    type: "file",
+    name: "README.md",
+  },
 ];
 
 export default function FileManager() {
@@ -55,8 +59,8 @@ export default function FileManager() {
     useFileManager(data);
 
   return (
-    <div className="p-6 space-y-6 mx-auto bg-card border rounded">
-      <div className="flex items-center text-sm text-muted-foreground">
+    <div className="h-full w-full flex flex-col p-6 space-y-6 bg-card/95 border rounded overflow-hidden">
+      <div className="flex items-center text-sm text-muted-foreground flex-shrink-0">
         {path.map((folder, index) => (
           <div key={folder} className="flex items-center">
             <button
@@ -72,7 +76,7 @@ export default function FileManager() {
         ))}
       </div>
 
-      <div>
+      <div className="flex-shrink-0">
         <button
           onClick={goBack}
           disabled={path.length <= 1}
@@ -82,7 +86,7 @@ export default function FileManager() {
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4 flex-1 overflow-auto">
         {currentFolder.map((item) =>
           item.type === "folder" ? (
             <FolderItem
