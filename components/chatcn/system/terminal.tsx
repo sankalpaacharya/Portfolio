@@ -8,6 +8,8 @@ import {
   useRef,
 } from "react";
 import { createPortal } from "react-dom";
+import { Kbd } from "@/components/ui/kbd";
+import { SquareSlash, SquareChevronRight, Command } from "lucide-react";
 
 type TerminalState = "normal" | "minimize" | "maximize";
 
@@ -45,13 +47,29 @@ export function TerminalProvider({
     {
       command: "help",
       output: (
-        <div>
-          <div>Available commands:</div>
-          <ul className="list-disc ml-6">
-            <li>whoami</li>
-            <li>help</li>
-            <li>clear</li>
-          </ul>
+        <div className="space-y-2">
+          <div>
+            <p className="flex gap-1 items-center">
+              Available commands
+              <SquareChevronRight className="size-4" />
+            </p>
+            <ul className="list-disc ml-6">
+              <li>whoami</li>
+              <li>help</li>
+              <li>clear</li>
+            </ul>
+          </div>
+          <div>
+            <p className="flex items-center gap-1">
+              Shortcuts <Command className="size-4" />
+            </p>
+            <ul className="list-disc ml-6">
+              <li>
+                <Kbd>Ctrl</Kbd>+<Kbd>k</Kbd>:
+                <span className="ml-1">applications manager</span>
+              </li>
+            </ul>
+          </div>
         </div>
       ),
     },
@@ -109,13 +127,28 @@ function getTerminalOutput(command: string): string | React.ReactNode {
       );
     case "help":
       return (
-        <div>
-          <div>Available commands:</div>
-          <ul className="list-disc ml-6">
-            <li>whoami</li>
-            <li>help</li>
-            <li>clear</li>
-          </ul>
+        <div className="space-y-2">
+          <div>
+            <p className="flex gap-1 items-center">
+              Available commands <SquareChevronRight className="size-4" />
+            </p>
+            <ul className="list-disc ml-6">
+              <li>whoami</li>
+              <li>help</li>
+              <li>clear</li>
+            </ul>
+          </div>
+          <div>
+            <p className="flex items-center gap-1">
+              Shortcuts <Command className="size-4" />
+            </p>
+            <ul className="list-disc ml-6">
+              <li>
+                <Kbd>Ctrl</Kbd>+<Kbd>k</Kbd>:
+                <span className="ml-1">applications manager</span>
+              </li>
+            </ul>
+          </div>
         </div>
       );
     case "clear":

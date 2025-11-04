@@ -1,27 +1,38 @@
+"use client";
+import { useState } from "react";
 import StatusBar from "@/components/status-bar";
 import { TerminalUI } from "@/components/terminal";
 import FileManager from "@/components/file-manager";
+import { LoginManager } from "@/components/chatcn/system/login-manager";
+import { ApplicationManager } from "@/components/chatcn/system/app-manager";
+import Browser from "@/components/chatcn/system/browser";
 
 export default function Page() {
+  const [isLogin, setIsLogin] = useState(true);
+
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      {/* Status Bar - Fixed at top like i3 */}
-      <div className="flex-none">
-        <StatusBar />
-      </div>
+      <ApplicationManager />
+      {!isLogin ? (
+        <LoginManager portal={true} onLogin={() => setIsLogin(true)} />
+      ) : (
+        <>
+          <div className="flex-none">
+            <StatusBar />
+          </div>
 
-      {/* Main workspace - i3 tiling style */}
-      <div className="flex-1 flex gap-1 p-1 overflow-hidden">
-        {/* Terminal Window - Left tile */}
-        <div className="flex-1 min-w-0 flex flex-col">
-          <TerminalUI />
-        </div>
+          <div className="flex-1 flex gap-1 p-1 overflow-hidden">
+            <div className="flex-1 min-w-0 flex flex-col">
+              <TerminalUI />
+            </div>
 
-        {/* File Manager Window - Right tile */}
-        <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
-          <FileManager />
-        </div>
-      </div>
+            <div className="flex-1 gap-1 min-w-0 flex flex-col overflow-hidden">
+              <FileManager />
+              {/* <Browser /> */}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
