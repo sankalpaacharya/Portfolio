@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { AboutMe } from "./renders/about-me";
 
 const data: FileNode[] = [
   {
@@ -47,12 +48,16 @@ const data: FileNode[] = [
           {
             type: "file",
             name: "preview.png",
-            thumbnail: "/images/still.png",
+            thumbnail: "/images/bloomiapp.png",
             render: (
               <div>
-                <img src="/images/still.png" />
+                <img src="/images/bloomiapp.png" />
               </div>
             ),
+          },
+          {
+            type: "file",
+            name: "README.md",
           },
         ],
       },
@@ -76,7 +81,8 @@ const data: FileNode[] = [
   },
   {
     type: "file",
-    name: "README.md",
+    name: "AboutMe.md",
+    render: <AboutMe />,
   },
 ];
 

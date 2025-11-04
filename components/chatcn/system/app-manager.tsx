@@ -55,12 +55,17 @@ const applications: Record<string, Application[]> = {
       icon: "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
       url: "https://github.com/sankalpaacharya",
     },
+    {
+      name: "Neovim",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Biglinux-Icons_%E2%80%93_neovim.svg/1024px-Biglinux-Icons_%E2%80%93_neovim.svg.png",
+      url: "https://github.com/sankalpaacharya",
+    },
   ],
   Entertainment: [
     {
       name: "YouTube",
       icon: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg",
-      url: "https://youtube.com/sankalpa02",
+      url: "https://youtube.com/@sankalpa02",
     },
     {
       name: "Spotify",
