@@ -77,6 +77,32 @@ const data: FileNode[] = [
           },
         ],
       },
+      {
+        type: "folder",
+        name: "zero two",
+        children: [
+          {
+            type: "file",
+            name: "preview.png",
+            thumbnail: "/images/zerotwo.png",
+            render: (
+              <div>
+                <img src="/images/zerotwo.png" />
+              </div>
+            ),
+          },
+          {
+            type: "file",
+            name: "zerotwo.mov",
+            thumbnail: "/images/zerotwo.png",
+            render: (
+              <div>
+                <video controls src={"video/zerotwo.mov"} />
+              </div>
+            ),
+          },
+        ],
+      },
     ],
   },
   {
@@ -118,7 +144,7 @@ export default function FileManager() {
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 flex-1 overflow-auto">
+      <div className="grid grid-cols-3 gap-4 flex-1 overflow-auto content-start justify-items-start">
         {currentFolder.map((item) =>
           item.type === "folder" ? (
             <FolderItem

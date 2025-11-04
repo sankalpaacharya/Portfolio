@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Kbd } from "../ui/kbd";
+import { Twitter } from "lucide-react";
 
 export function AboutMe() {
   return (
@@ -41,10 +42,22 @@ export function AboutMe() {
           </li>
         </ul>
       </div>
-
       <p>
-        You can find my recent web projects on <Kbd>~/projects</Kbd> directory
+        You can find my recent web development related work on{" "}
+        <Kbd>~/projects</Kbd> directory
       </p>
+      <div className="flex items-center gap-2 text-xs">
+        <span className="relative flex size-3">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>{" "}
+          <span className="relative inline-flex size-3 rounded-full bg-primary/70"></span>
+        </span>
+        <Link
+          href={"https://x.com/sankalpa_02"}
+          className="flex gap-1 items-center hover:underline"
+        >
+          Available for the opportunities <Twitter className="size-4" />
+        </Link>
+      </div>
     </div>
   );
 }
