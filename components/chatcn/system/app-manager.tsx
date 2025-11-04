@@ -10,6 +10,7 @@ import {
   CommandSeparator,
   CommandDialog,
 } from "@/components/ui/command";
+import { useStore } from "@/store/useStore";
 
 interface Application {
   name: string;
@@ -23,12 +24,10 @@ const applications: Record<string, Application[]> = {
     {
       name: "Firefox",
       icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
-      url: "https://firefox.com",
     },
     {
       name: "Chrome",
       icon: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg",
-      url: "https://chrome.google.com",
     },
   ],
   "Social Media": [
@@ -73,6 +72,7 @@ const applications: Record<string, Application[]> = {
 
 export function ApplicationManager() {
   const [open, setOpen] = useState(false);
+  const { openApp } = useStore();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -90,7 +90,10 @@ export function ApplicationManager() {
     if (app.url) {
       window.open(app.url, "_blank");
       setOpen(false);
+    } else {
+      openApp("browser");
     }
+    setOpen(false);
   };
 
   return (

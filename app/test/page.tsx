@@ -1,8 +1,5 @@
 import React from "react";
-import Browser from "@/components/chatcn/system/browser";
 
-type Props = {};
-
-export default function page({}: Props) {
-  return <div></div>;
+export default function page() {
+  return <div>this is test</div>;
 }

@@ -1,6 +1,12 @@
 "use client";
 import { useFileManager, FileNode } from "@/hooks/useFileManager";
 import { FolderItem, FileItem } from "@/components/chatcn/system/file-manager";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const data: FileNode[] = [
   {
@@ -16,6 +22,11 @@ const data: FileNode[] = [
             name: "preview.png",
             thumbnail:
               "https://www.sankalpa.info.np/images/shadcncollections.png",
+            render: (
+              <div>
+                <img src="https://www.sankalpa.info.np/images/shadcncollections.png" />
+              </div>
+            ),
           },
         ],
       },
@@ -26,12 +37,22 @@ const data: FileNode[] = [
           {
             type: "file",
             name: "video.mp4",
-            thumbnail: "https://www.sankalpa.info.np/images/still.png",
+            thumbnail: "/images/bloomivideo.png",
+            render: (
+              <div>
+                <video controls src={"video/bloomi.mp4"} />
+              </div>
+            ),
           },
           {
             type: "file",
             name: "preview.png",
-            thumbnail: "https://www.sankalpa.info.np/images/still.png",
+            thumbnail: "/images/still.png",
+            render: (
+              <div>
+                <img src="/images/still.png" />
+              </div>
+            ),
           },
         ],
       },
@@ -43,6 +64,11 @@ const data: FileNode[] = [
             type: "file",
             name: "preview.png",
             thumbnail: "https://www.sankalpa.info.np/images/weride.png",
+            render: (
+              <div>
+                <img src="/images/weride.png" />
+              </div>
+            ),
           },
         ],
       },
@@ -96,14 +122,21 @@ export default function FileManager() {
               tabIndex={0}
             />
           ) : (
-            <FileItem
-              key={item.name}
-              name={item.name}
-              src={item.src}
-              onClick={() => null}
-              thumbnail={item.thumbnail}
-              tabIndex={0}
-            />
+            <Dialog key={item.name}>
+              <DialogTrigger className="flex">
+                <FileItem
+                  name={item.name}
+                  src={item.src}
+                  onClick={() => null}
+                  thumbnail={item.thumbnail}
+                  tabIndex={0}
+                />
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>{item.name}</DialogTitle>
+                {item.render ? item.render : <p>No content to render</p>}
+              </DialogContent>
+            </Dialog>
           )
         )}
       </div>

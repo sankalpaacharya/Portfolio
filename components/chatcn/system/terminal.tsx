@@ -9,7 +9,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { Kbd } from "@/components/ui/kbd";
-import { SquareSlash, SquareChevronRight, Command } from "lucide-react";
+import { SquareChevronRight, Command } from "lucide-react";
 
 type TerminalState = "normal" | "minimize" | "maximize";
 

@@ -8,6 +8,7 @@ export type FileNode = {
   thumbnail?:string
   children?: FileNode[];
   onClick?: (...args: any[]) => any;
+  [key:string]: any
 };
 
 export function useFileManager(initialData: FileNode[]) {

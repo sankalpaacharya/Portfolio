@@ -6,9 +6,11 @@ import FileManager from "@/components/file-manager";
 import { LoginManager } from "@/components/chatcn/system/login-manager";
 import { ApplicationManager } from "@/components/chatcn/system/app-manager";
 import Browser from "@/components/chatcn/system/browser";
+import { useStore } from "@/store/useStore";
 
 export default function Page() {
   const [isLogin, setIsLogin] = useState(true);
+  const { isAppOpen } = useStore();
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
@@ -23,12 +25,12 @@ export default function Page() {
 
           <div className="flex-1 flex gap-1 p-1 overflow-hidden">
             <div className="flex-1 min-w-0 flex flex-col">
-              <TerminalUI />
+              {isAppOpen("terminal") && <TerminalUI />}
             </div>
 
             <div className="flex-1 gap-1 min-w-0 flex flex-col overflow-hidden">
-              <FileManager />
-              {/* <Browser /> */}
+              {isAppOpen("file-manager") && <FileManager />}
+              {isAppOpen("browser") && <Browser />}
             </div>
           </div>
         </>
