@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
-import { BodyWrapper } from "../components/body-wrapper";
+import { BodyWrapper } from "@/components/body-wrapper";
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StatusBar from "@/components/status-bar";
 import { TerminalUI } from "@/components/terminal";
 import FileManager from "@/components/file-manager";
