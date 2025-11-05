@@ -19,7 +19,6 @@ export function SettingsContent() {
             onClick={() => setWallpaper(wallpapers[item])}
           >
             <img
-              loading="lazy"
               src={wallpapers[item]}
               alt={`${item} wallpaper`}
               className={cn(
