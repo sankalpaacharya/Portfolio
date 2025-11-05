@@ -75,6 +75,7 @@ const data: FileNode[] = [
               </div>
             ),
           },
+          { type: "file", name: ".vscode" },
         ],
       },
       {

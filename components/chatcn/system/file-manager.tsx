@@ -102,6 +102,7 @@ function getFileMeta(extension: string) {
     "json",
     "html",
     "css",
+    "vscode",
   ];
   if (imageExt.includes(extension)) return { type: "image", icon: ImageIcon };
   if (videoExt.includes(extension)) return { type: "video", icon: Play };
