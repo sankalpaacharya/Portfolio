@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
+import { BodyWrapper } from "../components/body-wrapper";
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -22,9 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${jetbrains.className} antialiased bg-[url(/images/image.png)] bg-cover`}
-      >
+      <BodyWrapper className={`${jetbrains.className} antialiased bg-cover`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -33,7 +32,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-      </body>
+      </BodyWrapper>
     </html>
   );
 }

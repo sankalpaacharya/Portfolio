@@ -76,6 +76,7 @@ const data: FileNode[] = [
             ),
           },
           { type: "file", name: ".vscode" },
+          { type: "file", name: "README.md" },
         ],
       },
       {

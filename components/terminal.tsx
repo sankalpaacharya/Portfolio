@@ -21,16 +21,17 @@ function TerminalContent() {
             <TerminalPrompt className="font-mono flex items-center">
               <span className="text-secondary">sanku</span>
               <span className="text-muted-foreground">@</span>
-              <span className="text-primary">archlinux</span>
+              <span className="text-primary">ubuntu</span>
               <span className="text-muted-foreground">$</span>
             </TerminalPrompt>
           }
         />
+
         <div className="flex gap-2">
           <TerminalPrompt className="font-mono flex items-center">
             <span className="text-secondary">sanku</span>
             <span className="text-muted-foreground">@</span>
-            <span className="text-primary">archlinux</span>
+            <span className="text-primary">ubuntu</span>
             <span className="text-muted-foreground">$</span>
           </TerminalPrompt>
 

@@ -10,6 +10,8 @@ import {
 import { createPortal } from "react-dom";
 import { Kbd } from "@/components/ui/kbd";
 import { SquareChevronRight, Command } from "lucide-react";
+import { TerminalIntro } from "@/components/renders/terminal-intro";
+import { useStore } from "@/store/useStore";
 
 type TerminalState = "normal" | "minimize" | "maximize";
 
@@ -45,13 +47,16 @@ export function TerminalProvider({
     useState<TerminalState>(initialState);
   const [terminalHistory, setTerminalHistory] = useState<TerminalEntry[]>([
     {
+      command: "",
+      output: <TerminalIntro />,
+    },
+    {
       command: "help",
       output: (
         <div className="space-y-2">
           <div>
             <p className="flex gap-1 items-center">
-              Available commands
-              <SquareChevronRight className="size-4" />
+              Available commands <SquareChevronRight className="size-4" />
             </p>
             <ul className="list-disc ml-6">
               <li>whoami</li>
@@ -153,6 +158,8 @@ function getTerminalOutput(command: string): string | React.ReactNode {
       );
     case "clear":
       return "CLEAR";
+    case "exit":
+      return "Closing...";
     default:
       return "Command not found!";
   }
@@ -202,6 +209,7 @@ export function TerminalHeader({ children, className }: TerminalHeaderProps) {
 export function TerminalInput() {
   const { setTerminalHistory } = useContext(TerminalContext);
   const [inputValue, setInputValue] = useState<string>("");
+  const { closeApp } = useStore();
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -211,6 +219,10 @@ export function TerminalInput() {
       if (output === "CLEAR") {
         setTerminalHistory([]);
         setInputValue("");
+        return;
+      }
+      if (command === "exit") {
+        closeApp("terminal");
         return;
       }
 

@@ -6,8 +6,11 @@ import {
   SunMedium,
   Clock,
   Calendar,
+  Settings as SettingsIcon,
 } from "lucide-react";
 import { useState } from "react";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "./ui/dialog";
+import { SettingsContent } from "./chatcn/system/settings";
 
 export default function StatusBar() {
   const [active, setActive] = useState(1);
@@ -61,6 +64,21 @@ export default function StatusBar() {
             {num}
           </button>
         ))}
+      </div>
+      <div className="flex items-center">
+        <div className="p-1 hover:bg-muted rounded flex items-center">
+          <Dialog>
+            <DialogTrigger>
+              <div className="p-1 hover:bg-muted rounded">
+                <SettingsIcon className="size-4" />
+              </div>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogTitle>Settings</DialogTitle>
+              <SettingsContent />
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
 
       <div className="flex items-center gap-4 text-muted-foreground">

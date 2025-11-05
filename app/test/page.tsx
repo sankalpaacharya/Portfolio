@@ -1,5 +1,10 @@
 import React from "react";
+import SnakeGame from "@/components/snake-game";
 
 export default function page() {
-  return <div>this is test</div>;
+  return (
+    <div>
+      <SnakeGame />
+    </div>
+  );
 }

@@ -17,7 +17,7 @@ export function AboutMe() {
       </p>
       <div>
         <div className="flex items-center justify-center gap-2">
-          <p>Here&apos;s some of my past work related to web security </p>
+          <p>Here's some of my past work related to web security </p>
         </div>
         <ul className="list-disc ml-5">
           <li>
@@ -25,7 +25,7 @@ export function AboutMe() {
               href={
                 "https://blog.sankalpa.info.np/posts/testing-cookies-worth-dollar-500"
               }
-              className="text-primary underline hover:text-primary/80 transition-colors duration-150"
+              className="text-primary underline hover:text-primary/80 transition-all"
             >
               Discovered Broken Access Control on sso.agora.io leads to full
               account takeover($500)
@@ -34,7 +34,7 @@ export function AboutMe() {
           <li>
             <Link
               href={"https://support.leetcode.com/hc/en-us/requests/208294"}
-              className="text-primary underline hover:text-primary/80 transition-colors duration-150"
+              className="text-primary underline hover:text-primary/80 transition-all"
             >
               Discovered No Email verification Leads to Account Takeover on
               Leetcode(100 LeetCoins)

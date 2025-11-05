@@ -9,7 +9,7 @@ import Browser from "@/components/chatcn/system/browser";
 import { useStore } from "@/store/useStore";
 
 export default function Page() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const { isAppOpen } = useStore();
 
   return (
@@ -24,13 +24,14 @@ export default function Page() {
           </div>
 
           <div className="flex-1 flex gap-1 p-1 overflow-hidden">
-            <div className="flex-1 min-w-0 flex flex-col">
+            <div className="flex-1 min-w-0 flex flex-col gap-1">
               {isAppOpen("terminal") && <TerminalUI />}
+
+              {isAppOpen("browser") && <Browser />}
             </div>
 
             <div className="flex-1 gap-1 min-w-0 flex flex-col overflow-hidden">
               {isAppOpen("file-manager") && <FileManager />}
-              {isAppOpen("browser") && <Browser />}
             </div>
           </div>
         </>
