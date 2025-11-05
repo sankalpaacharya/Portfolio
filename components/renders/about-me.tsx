@@ -17,7 +17,7 @@ export function AboutMe() {
       </p>
       <div>
         <div className="flex items-center justify-center gap-2">
-          <p>Here's some of my past work related to web security </p>
+          <p>Here&apos;s some of my past work related to web security </p>
         </div>
         <ul className="list-disc ml-5">
           <li>
