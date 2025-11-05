@@ -1,6 +1,7 @@
 "use client";
 import { useFileManager, FileNode } from "@/hooks/useFileManager";
 import { FolderItem, FileItem } from "@/components/chatcn/system/file-manager";
+import { Gamepad2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,

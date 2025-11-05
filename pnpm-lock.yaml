@@ -44,6 +44,9 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.1.0
+      react-card-flip:
+        specifier: ^1.2.3
+        version: 1.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
@@ -1750,6 +1753,12 @@ packages:
     resolution: {integrity: sha512-1ZHVgK8QJxtwG52EmcQrxhUQyN1Bv+819IPTTDAGp7Hme3h9IX2thDZJG+KnVbNQ3cjh8DQdfX4wWsTHIw75ug==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
+
+  react-card-flip@1.2.3:
+    resolution: {integrity: sha512-yb8+yyeTf5UVlZ/FC78XDgxYeWhgA0W28OXNB31LjiFeY1Y2kFhLP7bFiED4KNaRWKjaafT74G38XU53a6eIuw==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
 
   react-dom@19.1.0:
     resolution: {integrity: sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==}
@@ -3817,6 +3826,11 @@ snapshots:
     dependencies:
       date-fns: 4.1.0
       react: 19.1.0
+
+  react-card-flip@1.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   react-dom@19.1.0(react@19.1.0):
     dependencies:

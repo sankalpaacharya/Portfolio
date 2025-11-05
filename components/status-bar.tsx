@@ -7,10 +7,12 @@ import {
   Clock,
   Calendar,
   Settings as SettingsIcon,
+  Gamepad2,
 } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "./ui/dialog";
 import { SettingsContent } from "./chatcn/system/settings";
+import { DiamondGame } from "./games/diamond";
 
 export default function StatusBar() {
   const [active, setActive] = useState(1);
@@ -65,7 +67,7 @@ export default function StatusBar() {
           </button>
         ))}
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center space-x-1">
         <div className="p-1 hover:bg-muted rounded flex items-center">
           <Dialog>
             <DialogTrigger>
@@ -76,6 +78,19 @@ export default function StatusBar() {
             <DialogContent>
               <DialogTitle>Settings</DialogTitle>
               <SettingsContent />
+            </DialogContent>
+          </Dialog>
+        </div>
+        <div className="p-1 hover:bg-muted rounded flex items-center">
+          <Dialog>
+            <DialogTrigger>
+              <div className="p-1 hover:bg-muted rounded">
+                <Gamepad2 className="size-4" />
+              </div>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogTitle>Game</DialogTitle>
+              <DiamondGame />
             </DialogContent>
           </Dialog>
         </div>
