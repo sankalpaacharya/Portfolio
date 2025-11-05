@@ -63,6 +63,7 @@ export function TerminalProvider({
               <li>whoami</li>
               <li>help</li>
               <li>clear</li>
+              <li>exit</li>
             </ul>
           </div>
           <div>
@@ -159,6 +160,7 @@ function getTerminalOutput(command: string): string | React.ReactNode {
               <li>whoami</li>
               <li>help</li>
               <li>clear</li>
+              <li>exit</li>
             </ul>
           </div>
           <div>
