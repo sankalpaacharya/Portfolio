@@ -9,7 +9,7 @@ import Browser from "@/components/chatcn/system/browser";
 import { useStore } from "@/store/useStore";
 
 export default function Page() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const { isAppOpen } = useStore();
 
   return (
