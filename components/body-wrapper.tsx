@@ -2,7 +2,7 @@
 
 import { useStore } from "@/store/useStore";
 import { Toaster } from "./ui/sonner";
-import TimeSpent from "./time-spent";
+// import TimeSpent from "./time-spent";
 
 export function BodyWrapper({
   children,
@@ -18,7 +18,7 @@ export function BodyWrapper({
       className={className}
       style={{ backgroundImage: `url(${wallpaper})` }}
     >
-      <TimeSpent />
+      {/* <TimeSpent /> */}
       <Toaster position="top-right" />
       {children}
     </body>

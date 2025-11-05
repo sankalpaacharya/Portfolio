@@ -9,9 +9,10 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { Kbd } from "@/components/ui/kbd";
-import { SquareChevronRight, Command } from "lucide-react";
+import { SquareChevronRight, Command, Info } from "lucide-react";
 import { TerminalIntro } from "@/components/renders/terminal-intro";
 import { useStore } from "@/store/useStore";
+import Link from "next/link";
 
 type TerminalState = "normal" | "minimize" | "maximize";
 
@@ -75,6 +76,23 @@ export function TerminalProvider({
               </li>
             </ul>
           </div>
+        </div>
+      ),
+    },
+    {
+      command: "",
+      output: (
+        <div className="border w-fit p-2 rounded mt-2 flex items-center gap-1">
+          <Info className="size-4" />
+          Components here used are from
+          <Link
+            href="https://chatcn.me"
+            target="_blank"
+            className="text-primary underline"
+          >
+            chatcn.me
+          </Link>
+          ✨
         </div>
       ),
     },
