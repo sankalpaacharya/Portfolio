@@ -8,6 +8,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { AboutMe } from "./renders/about-me";
+import WerideReadme from "./renders/weride";
+import BloomiReadMe from "./renders/bloomi";
+import Link from "next/link";
 
 const data: FileNode[] = [
   {
@@ -20,14 +23,29 @@ const data: FileNode[] = [
         children: [
           {
             type: "file",
-            name: "preview.png",
-            thumbnail:
-              "https://www.sankalpa.info.np/images/shadcncollections.png",
+            name: "3d component.mp4",
+            thumbnail: "/images/chatcnvideo.png",
             render: (
               <div>
-                <img src="https://www.sankalpa.info.np/images/shadcncollections.png" />
+                <video controls src={"video/chatcn.mp4"} />
               </div>
             ),
+          },
+          {
+            type: "file",
+            name: "preview.png",
+            thumbnail: "/images/chatcn.png",
+            render: (
+              <div>
+                <img src="/images/chatcn.png" />
+              </div>
+            ),
+          },
+          {
+            type: "file",
+            name: ".vscode",
+
+            src: "https://github.dev/sankalpaacharya/chatcn",
           },
         ],
       },
@@ -58,6 +76,13 @@ const data: FileNode[] = [
           {
             type: "file",
             name: "README.md",
+            render: <BloomiReadMe />,
+          },
+          {
+            type: "file",
+            name: ".vscode",
+
+            src: "https://github.dev/sankalpaacharya/bloomi",
           },
         ],
       },
@@ -75,8 +100,13 @@ const data: FileNode[] = [
               </div>
             ),
           },
-          { type: "file", name: ".vscode" },
-          { type: "file", name: "README.md" },
+          {
+            type: "file",
+            name: ".vscode",
+
+            src: "https://github.dev/sankalpaacharya/weride",
+          },
+          { type: "file", name: "README.md", render: <WerideReadme /> },
         ],
       },
       {
@@ -102,6 +132,12 @@ const data: FileNode[] = [
                 <video controls src={"video/zerotwo.mov"} />
               </div>
             ),
+          },
+          {
+            type: "file",
+            name: ".vscode",
+
+            src: "https://github.dev/sankalpaacharya/zero-two",
           },
         ],
       },
@@ -155,6 +191,17 @@ export default function FileManager() {
               onClick={() => openFolder(item.name)}
               tabIndex={0}
             />
+          ) : item.src ? (
+            <Link href={item.src} target="_blank" key={item.name}>
+              <FileItem
+                key={item.name}
+                name={item.name}
+                src={item.src}
+                onClick={() => {}}
+                thumbnail={item.thumbnail}
+                tabIndex={0}
+              />
+            </Link>
           ) : (
             <Dialog key={item.name}>
               <DialogTrigger className="flex">

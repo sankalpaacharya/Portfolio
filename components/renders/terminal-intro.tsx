@@ -13,7 +13,7 @@ export function TerminalIntro() {
   return (
     <div className="flex gap-4">
       <img
-        src={"/images/wallpaper.png"}
+        src={"/wallpapers/dark.png"}
         className="opacity-70 w-50 h-50 object-cover border"
       />
 
