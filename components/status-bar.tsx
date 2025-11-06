@@ -8,14 +8,26 @@ import {
   Calendar,
   Settings as SettingsIcon,
   Gamepad2,
+  type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "./ui/dialog";
 import { SettingsContent } from "./chatcn/system/settings";
+import { BrightnessSetting } from "./settings/brightness";
 import { DiamondGame } from "./games/diamond";
+import { useStore } from "@/store/useStore";
+
+type ActionItem = {
+  value: string;
+  icon: LucideIcon;
+  interactive?: boolean;
+  wrapper?: (children: React.ReactNode) => React.ReactNode;
+};
 
 export default function StatusBar() {
   const [active, setActive] = useState(1);
+  const brightness = useStore((state) => state.brightness);
+  const setBrightness = useStore((state) => state.setBrightness);
 
   const now = new Date();
   const time = now.toLocaleTimeString([], {
@@ -27,8 +39,16 @@ export default function StatusBar() {
     day: "numeric",
   });
 
-  const actions = [
-    { value: "30%", icon: SunMedium },
+  const actions: ActionItem[] = [
+    {
+      value: `${brightness}%`,
+      icon: SunMedium,
+      wrapper: (children) => (
+        <BrightnessSetting value={brightness} onValueChange={setBrightness}>
+          {children}
+        </BrightnessSetting>
+      ),
+    },
     { value: "100%", icon: BatteryFull },
     { value: "Wi-Fi", icon: Wifi },
     { value: "BT", icon: Bluetooth },
@@ -96,16 +116,26 @@ export default function StatusBar() {
         </div>
       </div>
 
-      <div className="flex items-center gap-4 text-muted-foreground">
-        {actions.map(({ value, icon: Icon }, idx) => (
-          <div
-            key={idx}
-            className="flex items-center gap-1 hover:text-foreground transition-colors duration-200"
-          >
-            <Icon className="size-4" />
-            <span>{value}</span>
-          </div>
-        ))}
+      <div className="flex items-center gap-1 text-muted-foreground">
+        {actions.map(({ value, icon: Icon, wrapper }, idx) => {
+          const content = (
+            <div
+              className={`flex items-center gap-1 hover:text-foreground transition-colors duration-200 cursor-pointer`}
+            >
+              <Icon className="size-4" />
+              <span>{value}</span>
+            </div>
+          );
+
+          return (
+            <div
+              key={idx}
+              className="flex items-center hover:bg-muted px-2 py-1 rounded"
+            >
+              {wrapper ? wrapper(content) : content}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useStore } from "@/store/useStore";
 import { Toaster } from "./ui/sonner";
+import BrightnessScreen from "./settings/brightness-screen";
 // import TimeSpent from "./time-spent";
 
 export function BodyWrapper({
@@ -12,6 +13,7 @@ export function BodyWrapper({
   className: string;
 }) {
   const wallpaper = useStore((state) => state.wallpaper);
+  const brightness = useStore((state) => state.brightness);
 
   return (
     <body
@@ -20,6 +22,7 @@ export function BodyWrapper({
     >
       {/* <TimeSpent /> */}
       <Toaster position="top-right" />
+      <BrightnessScreen brightness={brightness} />
       {children}
     </body>
   );
