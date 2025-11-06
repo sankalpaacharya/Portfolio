@@ -7,7 +7,9 @@ import {
   Play,
   FileText,
   FileCode,
+  LoaderCircle,
 } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type ItemCommonProps = {
   name: string;
@@ -47,6 +49,7 @@ export function FileItem({
   tabIndex = 0,
   thumbnail,
 }: ItemCommonProps) {
+  const [imageLoading, setImageLoading] = React.useState(true);
   const fileExtension = (name.split(".").pop() || "").toLowerCase();
   const meta = getFileMeta(fileExtension);
   const imageSrc = thumbnail;
@@ -60,13 +63,22 @@ export function FileItem({
       <div className="w-28 h-28 flex items-center justify-center rounded-md relative overflow-hidden">
         {imageSrc ? (
           <>
+            {imageLoading && (
+              <div className="absolute inset-0">
+                <FileSkeleton />
+              </div>
+            )}
             <img
               src={imageSrc}
               alt={name}
               loading="lazy"
-              className="object-cover w-full h-full rounded-md"
+              className={`object-cover w-full h-full rounded-md ${
+                imageLoading ? "opacity-0" : "opacity-100"
+              } transition-opacity duration-300`}
+              onLoad={() => setImageLoading(false)}
+              onError={() => setImageLoading(false)}
             />
-            {meta.type === "video" && (
+            {meta.type === "video" && !imageLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-md">
                 <div className="bg-black/50 rounded-full p-2">
                   <Play className="w-5 h-5 text-white fill-white" />
@@ -81,6 +93,15 @@ export function FileItem({
       <span className="text-sm text-muted-foreground truncate mt-2">
         {name}
       </span>
+    </div>
+  );
+}
+
+export function FileSkeleton() {
+  return (
+    <div className="relative w-28 h-28">
+      <Skeleton className="w-full h-full bg-muted" />
+      <LoaderCircle className="animate-spin absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary" />
     </div>
   );
 }
