@@ -8,7 +8,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Slider } from "@/components/ui/slider";
-import { useState, useEffect } from "react";
 
 type BrightnessSettingProps = {
   children: React.ReactNode;

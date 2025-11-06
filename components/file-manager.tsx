@@ -11,6 +11,8 @@ import { AboutMe } from "./renders/about-me";
 import WerideReadme from "./renders/weride";
 import BloomiReadMe from "./renders/bloomi";
 import Link from "next/link";
+import Chatcn from "./renders/chatcn";
+import ZeroTwoReadMe from "./renders/zerotwo";
 
 const data: FileNode[] = [
   {
@@ -40,6 +42,11 @@ const data: FileNode[] = [
                 <img src="/images/chatcn.png" />
               </div>
             ),
+          },
+          {
+            type: "file",
+            name: "README.md",
+            render: <Chatcn />,
           },
           {
             type: "file",
@@ -92,6 +99,17 @@ const data: FileNode[] = [
         children: [
           {
             type: "file",
+            name: "weride.mp4",
+            thumbnail: "/images/weridevideo.png",
+            render: (
+              <div>
+                <video controls src={"video/weride.mp4"} />
+              </div>
+            ),
+          },
+
+          {
+            type: "file",
             name: "preview.png",
             thumbnail: "https://www.sankalpa.info.np/images/weride.png",
             render: (
@@ -100,19 +118,30 @@ const data: FileNode[] = [
               </div>
             ),
           },
+
+          { type: "file", name: "README.md", render: <WerideReadme /> },
           {
             type: "file",
             name: ".vscode",
 
             src: "https://github.dev/sankalpaacharya/weride",
           },
-          { type: "file", name: "README.md", render: <WerideReadme /> },
         ],
       },
       {
         type: "folder",
         name: "zero two",
         children: [
+          {
+            type: "file",
+            name: "zerotwo.mov",
+            thumbnail: "/images/zerotwovideo.png",
+            render: (
+              <div>
+                <video controls src={"video/gamevideo.mov"} />
+              </div>
+            ),
+          },
           {
             type: "file",
             name: "preview.png",
@@ -123,15 +152,11 @@ const data: FileNode[] = [
               </div>
             ),
           },
+
           {
             type: "file",
-            name: "zerotwo.mov",
-            thumbnail: "/images/zerotwo.png",
-            render: (
-              <div>
-                <video controls src={"video/zerotwo.mov"} />
-              </div>
-            ),
+            name: "README.md",
+            render: <ZeroTwoReadMe />,
           },
           {
             type: "file",
@@ -140,6 +165,10 @@ const data: FileNode[] = [
             src: "https://github.dev/sankalpaacharya/zero-two",
           },
         ],
+      },
+      {
+        type: "file",
+        name: "Motivation.md",
       },
     ],
   },

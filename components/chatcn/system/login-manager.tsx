@@ -84,11 +84,38 @@ export function LoginManager({
 }
 
 export function FirstScreen() {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   return (
     <div className="h-full w-full flex flex-col items-center text-white relative">
       <div className="flex flex-col items-center space-y-3 mt-20">
-        <div className="text-6xl font-bold">01:58</div>
-        <div className="text-lg">Monday, November 2 2025</div>
+        <div className="text-6xl font-bold">{formatTime(currentTime)}</div>
+        <div className="text-lg">{formatDate(currentTime)}</div>
       </div>
       <p className="text-lg italic text-muted-foreground absolute bottom-10">
         Press &quot;Space&quot; or &quot;Enter&quot; to login

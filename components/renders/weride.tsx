@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 export default function WerideReadme() {
   return (
@@ -35,6 +35,30 @@ export default function WerideReadme() {
         deliver vehicle keys — everything was super fun to work on!
       </p>
       <p>End date: May 2025</p>
+
+      <div>
+        <p>
+          site:{" "}
+          <Link
+            target="_blank"
+            href={"weride-ruddy.vercel.app/"}
+            className="text-primary hover:underline"
+          >
+            weride-ruddy.vercel.app
+          </Link>
+        </p>
+
+        <p>
+          repo:{" "}
+          <Link
+            target="_blank"
+            href={"https://github.com/sankalpaacharya/weride/"}
+            className="text-primary hover:underline"
+          >
+            github.com/sankalpaacharya/weride
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

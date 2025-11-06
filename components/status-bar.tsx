@@ -16,6 +16,7 @@ import { SettingsContent } from "./chatcn/system/settings";
 import { BrightnessSetting } from "./settings/brightness";
 import { DiamondGame } from "./games/diamond";
 import { useStore } from "@/store/useStore";
+import CalendarCard from "./settings/calendar";
 
 type ActionItem = {
   value: string;
@@ -53,7 +54,11 @@ export default function StatusBar() {
     { value: "Wi-Fi", icon: Wifi },
     { value: "BT", icon: Bluetooth },
     { value: time, icon: Clock },
-    { value: date, icon: Calendar },
+    {
+      value: date,
+      icon: Calendar,
+      wrapper: (children) => <CalendarCard>{children} </CalendarCard>,
+    },
   ];
 
   return (

@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function BloomiReadMe() {
   return (
     <div className="space-y-5">
@@ -29,6 +30,30 @@ export default function BloomiReadMe() {
         I&apos;m not actively working on Bloomi at the moment, but I&apos;ll
         definitely be adding more features in the future.
       </p>
+
+      <div>
+        <p>
+          site:{" "}
+          <Link
+            target="_blank"
+            href={"https://fixyourspend.vercel.app/"}
+            className="text-primary hover:underline"
+          >
+            bloomi.live
+          </Link>
+        </p>
+
+        <p>
+          repo:{" "}
+          <Link
+            target="_blank"
+            href={"https://github.com/sankalpaacharya/Bloomi/"}
+            className="text-primary hover:underline"
+          >
+            github.com/sankalpaacharya/bloomi
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
