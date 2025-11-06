@@ -13,6 +13,7 @@ import BloomiReadMe from "./renders/bloomi";
 import Link from "next/link";
 import Chatcn from "./renders/chatcn";
 import ZeroTwoReadMe from "./renders/zerotwo";
+import { Experience } from "./renders/experience";
 
 const data: FileNode[] = [
   {
@@ -176,6 +177,11 @@ const data: FileNode[] = [
     type: "file",
     name: "AboutMe.md",
     render: <AboutMe />,
+  },
+  {
+    type: "file",
+    name: "Experience.md",
+    render: <Experience />,
   },
 ];
 

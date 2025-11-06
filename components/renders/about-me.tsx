@@ -6,8 +6,8 @@ export function AboutMe() {
   return (
     <div className="space-y-5">
       <p>
-        Hello 👋, I’m <span className="text-secondary">sanku</span>. I’ve been
-        super excited about computers ever since I was a kid.
+        Hello 👋, I’m Sankalpa(<span className="text-secondary">sanku</span>).
+        I’ve been super excited about computers ever since I was a kid.
       </p>
 
       <p>I started programming back in 2020 when I was in high school.</p>
