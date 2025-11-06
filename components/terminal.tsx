@@ -13,7 +13,7 @@ import {
 function TerminalContent() {
   return (
     <Terminal className="w-full h-full font-mono text-sm sm:text-md shadow-xl flex flex-col">
-      <TerminalBody className="bg-card/95 flex-1 flex flex-col">
+      <TerminalBody className="bg-card/95 flex-1 flex flex-col backdrop-blur-xs">
         <TerminalBodyContent
           prompt={
             <TerminalPrompt className="font-mono flex items-center text-xs sm:text-sm">

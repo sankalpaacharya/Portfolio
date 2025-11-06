@@ -198,7 +198,7 @@ export default function FileManager() {
     useFileManager(data);
 
   return (
-    <div className="h-full w-full flex flex-col p-3 sm:p-6 space-y-4 sm:space-y-6 bg-card/95 border rounded overflow-hidden">
+    <div className="h-full w-full flex flex-col p-3 sm:p-6 space-y-4 sm:space-y-6 bg-card/95 backdrop-blur-xs border rounded overflow-hidden">
       <div className="flex items-center text-xs sm:text-sm text-muted-foreground flex-shrink-0 overflow-x-auto whitespace-nowrap">
         {path.map((folder, index) => (
           <div key={folder} className="flex items-center flex-shrink-0">

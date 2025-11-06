@@ -62,7 +62,7 @@ export default function StatusBar() {
   ];
 
   return (
-    <div className="bg-card flex justify-between items-center p-2 mx-1 border rounded shadow-xl text-xs gap-2 overflow-x-auto">
+    <div className="bg-card/95 backdrop-blur-xs flex justify-between items-center p-2 mx-1 border rounded shadow-xl text-xs gap-2 overflow-x-auto">
       <div
         className="flex items-center gap-2 relative flex-shrink-0"
         style={
