@@ -13,7 +13,7 @@ export default function Page() {
   const { isAppOpen } = useStore();
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col overflow-hidden touch-pan-y">
       <ApplicationManager />
       {!isLogin ? (
         <LoginManager portal={true} onLogin={() => setIsLogin(true)} />
@@ -23,14 +23,13 @@ export default function Page() {
             <StatusBar />
           </div>
 
-          <div className="flex-1 flex gap-1 p-1 overflow-hidden">
-            <div className="flex-1 min-w-0 flex flex-col gap-1">
+          <div className="flex-1 flex flex-col lg:flex-row gap-1 p-1 overflow-hidden min-h-0">
+            <div className="flex-1 min-w-0 min-h-0 flex flex-col gap-1 overflow-auto lg:overflow-hidden">
               {isAppOpen("terminal") && <TerminalUI />}
-
               {isAppOpen("browser") && <Browser />}
             </div>
 
-            <div className="flex-1 gap-1 min-w-0 flex flex-col overflow-hidden">
+            <div className="flex-1 min-w-0 min-h-0 flex flex-col gap-1 overflow-auto lg:overflow-hidden">
               {isAppOpen("file-manager") && <FileManager />}
             </div>
           </div>

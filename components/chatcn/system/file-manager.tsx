@@ -29,13 +29,13 @@ export function FolderItem({
   return (
     <div
       onDoubleClick={onClick}
-      className={`flex flex-col h-44 w-40 hover:bg-muted items-center justify-center p-3 rounded-lg bg-transparent cursor-pointer ${className}`}
+      className={`flex flex-col h-32 w-28 sm:h-44 sm:w-40 hover:bg-muted items-center justify-center p-2 sm:p-3 rounded-lg bg-transparent cursor-pointer ${className}`}
       tabIndex={tabIndex}
     >
-      <div className="w-28 h-28 flex items-center justify-center rounded-md">
-        <FolderIcon className="w-20 h-20 text-primary" />
+      <div className="w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center rounded-md">
+        <FolderIcon className="w-14 h-14 sm:w-20 sm:h-20 text-primary" />
       </div>
-      <span className="text-sm text-muted-foreground truncate mt-2">
+      <span className="text-xs sm:text-sm text-muted-foreground truncate mt-1 sm:mt-2 max-w-full text-center">
         {name}
       </span>
     </div>
@@ -57,10 +57,10 @@ export function FileItem({
   return (
     <div
       onDoubleClick={onClick}
-      className={`flex flex-col h-44 w-40 hover:bg-muted items-center justify-center p-3 rounded-lg bg-transparent cursor-pointer ${className}`}
+      className={`flex flex-col h-32 w-28 sm:h-44 sm:w-40 hover:bg-muted items-center justify-center p-2 sm:p-3 rounded-lg bg-transparent cursor-pointer ${className}`}
       tabIndex={tabIndex}
     >
-      <div className="w-28 h-28 flex items-center justify-center rounded-md relative overflow-hidden">
+      <div className="w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center rounded-md relative overflow-hidden">
         {imageSrc ? (
           <>
             {imageLoading && (
@@ -81,16 +81,16 @@ export function FileItem({
             {meta.type === "video" && !imageLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-md">
                 <div className="bg-black/50 rounded-full p-2">
-                  <Play className="w-5 h-5 text-white fill-white" />
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 text-white fill-white" />
                 </div>
               </div>
             )}
           </>
         ) : (
-          <meta.icon className="w-20 h-20 text-muted-foreground" />
+          <meta.icon className="w-14 h-14 sm:w-20 sm:h-20 text-muted-foreground" />
         )}
       </div>
-      <span className="text-sm text-muted-foreground truncate mt-2">
+      <span className="text-xs sm:text-sm text-muted-foreground truncate mt-1 sm:mt-2 max-w-full text-center">
         {name}
       </span>
     </div>

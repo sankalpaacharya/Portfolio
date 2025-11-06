@@ -166,8 +166,21 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    -webkit-overflow-scrolling: touch;
   }
   body {
     @apply bg-background text-foreground;
+    touch-action: pan-y pan-x;
+    overscroll-behavior: none;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior: none;
+  }
+  input, textarea, select {
+    touch-action: manipulation;
+  }
+  .webkit-overflow-scrolling-touch {
+    -webkit-overflow-scrolling: touch;
   }
 }

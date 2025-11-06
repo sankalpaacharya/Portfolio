@@ -198,10 +198,10 @@ export default function FileManager() {
     useFileManager(data);
 
   return (
-    <div className="h-full w-full flex flex-col p-6 space-y-6 bg-card/95 border rounded overflow-hidden">
-      <div className="flex items-center text-sm text-muted-foreground flex-shrink-0">
+    <div className="h-full w-full flex flex-col p-3 sm:p-6 space-y-4 sm:space-y-6 bg-card/95 border rounded overflow-hidden">
+      <div className="flex items-center text-xs sm:text-sm text-muted-foreground flex-shrink-0 overflow-x-auto whitespace-nowrap">
         {path.map((folder, index) => (
-          <div key={folder} className="flex items-center">
+          <div key={folder} className="flex items-center flex-shrink-0">
             <button
               onClick={() => goTo(index)}
               className="text-muted-foreground focus:outline-none hover:underline"
@@ -219,13 +219,13 @@ export default function FileManager() {
         <button
           onClick={goBack}
           disabled={path.length <= 1}
-          className="px-3 py-1 border border-border rounded text-sm bg-muted/10 text-muted-foreground disabled:opacity-50"
+          className="px-3 py-1 border border-border rounded text-xs sm:text-sm bg-muted/10 text-muted-foreground disabled:opacity-50"
         >
           ← Back
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 flex-1 overflow-auto content-start justify-items-start">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 flex-1 overflow-y-auto overflow-x-hidden content-start justify-items-start webkit-overflow-scrolling-touch">
         {currentFolder.map((item) =>
           item.type === "folder" ? (
             <FolderItem

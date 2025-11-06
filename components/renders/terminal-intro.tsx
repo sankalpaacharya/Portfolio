@@ -11,19 +11,23 @@ export function TerminalIntro() {
   ];
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
       <img
         src={"/wallpapers/dark.png"}
-        className="opacity-70 w-50 h-50 object-cover border"
+        className="opacity-70 w-32 h-32 sm:w-40 sm:h-40 lg:w-50 lg:h-50 object-cover border flex-shrink-0"
+        alt="System wallpaper"
       />
 
-      <div>
-        <p className="text-primary">sanku@ubuntu</p>
-        <p>--------------</p>
+      <div className="min-w-0 flex-1">
+        <p className="text-primary text-sm sm:text-base">sanku@ubuntu</p>
+        <p className="text-sm sm:text-base">--------------</p>
         {systemInfo.map((info) => (
-          <div key={info.label} className="flex space-x-2">
-            <span className="text-secondary">{info.label}:</span>{" "}
-            <p className="text-primary">{info.value}</p>
+          <div
+            key={info.label}
+            className="flex flex-wrap gap-x-2 text-xs sm:text-sm"
+          >
+            <span className="text-secondary flex-shrink-0">{info.label}:</span>
+            <p className="text-primary break-all">{info.value}</p>
           </div>
         ))}
       </div>

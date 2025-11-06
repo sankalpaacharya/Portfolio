@@ -93,50 +93,51 @@ export default function Browser({
     <Card
       className={`flex flex-col h-full overflow-hidden ${className} bg-card/95`}
     >
-      <div className="flex items-center gap-2 p-3 border-b">
-        <div className="flex items-center gap-1">
+      <div className="flex items-center gap-2 p-2 sm:p-3 border-b flex-wrap sm:flex-nowrap">
+        <div className="flex items-center gap-1 flex-shrink-0">
           <button
             onClick={() => window.history.back()}
-            className="p-2 rounded-md hover:bg-muted transition-colors disabled:opacity-50"
+            className="p-1.5 sm:p-2 rounded-md hover:bg-muted transition-colors disabled:opacity-50"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
           <button
             onClick={() => window.history.forward()}
-            className="p-2 rounded-md hover:bg-muted transition-colors disabled:opacity-50"
+            className="p-1.5 sm:p-2 rounded-md hover:bg-muted transition-colors disabled:opacity-50"
             aria-label="Go forward"
           >
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
           <button
             onClick={handleRefresh}
-            className="p-2 rounded-md hover:bg-muted transition-colors"
+            className="p-1.5 sm:p-2 rounded-md hover:bg-muted transition-colors"
             aria-label="Refresh"
           >
             <RotateCw
-              className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
+              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                isLoading ? "animate-spin" : ""
+              }`}
             />
           </button>
           <button
             onClick={handleHome}
-            className="p-2 rounded-md hover:bg-muted transition-colors"
+            className="p-1.5 sm:p-2 rounded-md hover:bg-muted transition-colors"
             aria-label="Home"
           >
-            <Home className="w-4 h-4" />
+            <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </div>
 
-        {/* Address Bar */}
-        <div className="flex-1 flex items-center gap-2 px-3 py-1.5 rounded-md bg-background border">
-          <Globe className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+        <div className="flex-1 flex items-center gap-2 px-2 sm:px-3 py-1.5 rounded-md bg-background border min-w-0 w-full sm:w-auto">
+          <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
           <Input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Enter URL..."
-            className="border-0 shadow-none focus-visible:ring-0 h-auto p-0 bg-transparent"
+            className="border-0 shadow-none focus-visible:ring-0 h-auto p-0 bg-transparent text-xs sm:text-sm"
           />
           <button
             onClick={handleNavigate}
@@ -147,7 +148,6 @@ export default function Browser({
         </div>
       </div>
 
-      {/* Browser Content */}
       <div className="flex-1 relative bg-background">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10">

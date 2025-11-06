@@ -11,14 +11,12 @@ import {
 } from "@/components/chatcn/system/terminal";
 
 function TerminalContent() {
-  // const { setTerminalState } = useTerminal();
-
   return (
-    <Terminal className="w-full h-full font-mono text-md shadow-xl flex flex-col">
+    <Terminal className="w-full h-full font-mono text-sm sm:text-md shadow-xl flex flex-col">
       <TerminalBody className="bg-card/95 flex-1 flex flex-col">
         <TerminalBodyContent
           prompt={
-            <TerminalPrompt className="font-mono flex items-center">
+            <TerminalPrompt className="font-mono flex items-center text-xs sm:text-sm">
               <span className="text-secondary">sanku</span>
               <span className="text-muted-foreground">@</span>
               <span className="text-primary">ubuntu</span>
@@ -28,7 +26,7 @@ function TerminalContent() {
         />
 
         <div className="flex gap-2">
-          <TerminalPrompt className="font-mono flex items-center">
+          <TerminalPrompt className="font-mono flex items-center text-xs sm:text-sm">
             <span className="text-secondary">sanku</span>
             <span className="text-muted-foreground">@</span>
             <span className="text-primary">ubuntu</span>
