@@ -15,6 +15,7 @@ import Chatcn from "./renders/chatcn";
 import ZeroTwoReadMe from "./renders/zerotwo";
 import { Experience } from "./renders/experience";
 import Reflection from "./renders/reflection";
+import Blogs from "./renders/blogs";
 
 const data: FileNode[] = [
   {
@@ -184,6 +185,11 @@ const data: FileNode[] = [
     type: "file",
     name: "Experience.md",
     render: <Experience />,
+  },
+  {
+    type: "file",
+    name: "Blogs.md",
+    render: <Blogs />,
   },
 ];
 
