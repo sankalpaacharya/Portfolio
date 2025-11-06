@@ -14,6 +14,7 @@ import Link from "next/link";
 import Chatcn from "./renders/chatcn";
 import ZeroTwoReadMe from "./renders/zerotwo";
 import { Experience } from "./renders/experience";
+import Reflection from "./renders/reflection";
 
 const data: FileNode[] = [
   {
@@ -169,7 +170,8 @@ const data: FileNode[] = [
       },
       {
         type: "file",
-        name: "Motivation.md",
+        name: "Reflection.md",
+        render: <Reflection />,
       },
     ],
   },
