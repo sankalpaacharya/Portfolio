@@ -7,6 +7,11 @@ import { LoginManager } from "@/components/chatcn/system/login-manager";
 import { ApplicationManager } from "@/components/chatcn/system/app-manager";
 import Browser from "@/components/chatcn/system/browser";
 import { useStore } from "@/store/useStore";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 export default function Page() {
   const [isLogin, setIsLogin] = useState(false);
@@ -23,16 +28,60 @@ export default function Page() {
             <StatusBar />
           </div>
 
-          <div className="flex-1 flex gap-1 p-1 overflow-hidden">
-            <div className="flex-1 min-w-0 flex flex-col gap-1">
-              {isAppOpen("terminal") && <TerminalUI />}
+          <div className="flex-1 overflow-hidden p-1">
+            <ResizablePanelGroup
+              direction="horizontal"
+              className="h-full w-full"
+            >
+              {/* Left side - Terminal and Browser */}
+              {(isAppOpen("terminal") || isAppOpen("browser")) && (
+                <>
+                  <ResizablePanel defaultSize={50} minSize={30}>
+                    <ResizablePanelGroup direction="vertical">
+                      {isAppOpen("terminal") && (
+                        <>
+                          <ResizablePanel defaultSize={50} minSize={20}>
+                            <div className="h-full w-full p-0.5">
+                              <TerminalUI />
+                            </div>
+                          </ResizablePanel>
+                          {isAppOpen("browser") && (
+                            <ResizableHandle withHandle />
+                          )}
+                        </>
+                      )}
 
-              {isAppOpen("browser") && <Browser />}
-            </div>
+                      {isAppOpen("browser") && (
+                        <ResizablePanel
+                          defaultSize={isAppOpen("terminal") ? 50 : 100}
+                          minSize={20}
+                        >
+                          <div className="h-full w-full p-0.5">
+                            <Browser />
+                          </div>
+                        </ResizablePanel>
+                      )}
+                    </ResizablePanelGroup>
+                  </ResizablePanel>
 
-            <div className="flex-1 gap-1 min-w-0 flex flex-col overflow-hidden">
-              {isAppOpen("file-manager") && <FileManager />}
-            </div>
+                  {isAppOpen("file-manager") && <ResizableHandle withHandle />}
+                </>
+              )}
+
+              {/* Right side - File Manager */}
+              {isAppOpen("file-manager") && (
+                <ResizablePanel
+                  defaultSize={
+                    isAppOpen("terminal") || isAppOpen("browser") ? 50 : 100
+                  }
+                  minSize={30}
+                >
+                  <div className="h-full w-full p-0.5">
+                    <FileManager />
+                  </div>
+                </ResizablePanel>
+              )}
+            </ResizablePanelGroup>
           </div>
         </>
       )}
