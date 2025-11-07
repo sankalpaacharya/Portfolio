@@ -18,12 +18,7 @@ export function BodyWrapper({
   return (
     <body
       className={className}
-      style={{
-        backgroundImage: `url(${wallpaper})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
+      style={{ backgroundImage: `url(${wallpaper})` }}
     >
       {/* <TimeSpent /> */}
       <Toaster position="top-right" />

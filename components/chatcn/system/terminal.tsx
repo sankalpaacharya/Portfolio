@@ -289,7 +289,7 @@ export function TerminalBody({ children, className }: TerminalBodyProps) {
   return (
     <div
       className={cn(
-        "bg-muted rounded-none rounded-b p-3 overflow-y-auto overflow-x-hidden webkit-overflow-scrolling-touch",
+        "bg-muted rounded-none rounded-b p-3 overflow-y-auto",
         terminalState === "maximize" ? "flex-1" : className
       )}
     >

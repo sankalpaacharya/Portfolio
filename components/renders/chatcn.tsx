@@ -1,32 +1,5 @@
 import Link from "next/link";
 
-const coolComponents = [
-  {
-    name: "Code Editor",
-    link: "https://www.chatcn.me/docs/component/code-editor",
-  },
-  {
-    name: "Audio Visualizer",
-    link: "https://www.chatcn.me/docs/3d-components/audio-visualizer",
-  },
-  {
-    name: "Chat Container",
-    link: "https://www.chatcn.me/docs/component/chat-container",
-  },
-  {
-    name: "Terminal",
-    link: "https://www.chatcn.me/docs/system/terminal",
-  },
-  {
-    name: "Weather",
-    link: "https://www.chatcn.me/docs/component/weather",
-  },
-  {
-    name: "Calendar",
-    link: "https://www.chatcn.me/docs/component/calendar",
-  },
-];
-
 export default function Chatcn() {
   return (
     <div className="space-y-5">
@@ -42,48 +15,19 @@ export default function Chatcn() {
         , I had to build a calendar-like heatmap.
       </p>
       <p>
-        shadcn didn’t have the component I needed, so I built one for my app.
-        after finishing the component, I thought why not make it shareable?
+        Shadcn didn’t have the component I needed, so I built one for my app.
+        After finishing the component, I thought — why not make it shareable?
       </p>
       <p>
-        since then, I’ve been adding more components that I use in my
+        Since then, I’ve been adding more components that I use in my
         applications and feel might be useful for others too.
       </p>
       <p>
-        this is the project I’m actively working on right now. my goal isn’t
+        This is the project I’m actively working on right now. My goal isn’t
         just to add UI components but to build things that are genuinely helpful
         in web development ❤️
       </p>
-
-      <div className="pt-2">
-        <p className="font-medium mb-2">components available</p>
-        <div className="flex flex-wrap gap-2 text-sm">
-          {coolComponents.map((c) => (
-            <Link
-              key={c.name}
-              href={c.link}
-              target="_blank"
-              className="text-primary hover:underline hover:text-primary/80 transition-colors"
-            >
-              {c.name}
-            </Link>
-          ))}
-        </div>
-
-        <p className="text-muted-foreground text-sm mt-3">
-          these are just a few highlights{" "}
-          <Link
-            href="https://www.chatcn.me/docs"
-            target="_blank"
-            className="text-primary hover:underline inline-flex items-center gap-1"
-          >
-            explore all components in the docs
-            <span aria-hidden>→</span>
-          </Link>
-        </p>
-      </div>
-
-      <div className="pt-4 space-y-1">
+      <div>
         <p>
           site:{" "}
           <Link

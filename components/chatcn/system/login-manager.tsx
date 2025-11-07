@@ -42,12 +42,6 @@ export function LoginManager({
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [active]);
 
-  const handleTap = () => {
-    if (!active) {
-      setActive(true);
-    }
-  };
-
   if (!mounted) return null;
 
   const content = (
@@ -74,8 +68,6 @@ export function LoginManager({
             exit={{ y: "-100%" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 z-10"
-            onClick={handleTap}
-            onTouchEnd={handleTap}
           >
             <FirstScreen />
           </motion.div>
@@ -120,18 +112,13 @@ export function FirstScreen() {
   };
 
   return (
-    <div className="h-full w-full flex flex-col items-center text-white relative px-4 cursor-pointer select-none">
+    <div className="h-full w-full flex flex-col items-center text-white relative">
       <div className="flex flex-col items-center space-y-3 mt-20">
-        <div className="text-4xl sm:text-6xl font-bold">
-          {formatTime(currentTime)}
-        </div>
-        <div className="text-base sm:text-lg">{formatDate(currentTime)}</div>
+        <div className="text-6xl font-bold">{formatTime(currentTime)}</div>
+        <div className="text-lg">{formatDate(currentTime)}</div>
       </div>
-      <p className="text-sm sm:text-lg italic text-muted-foreground absolute bottom-10 text-center">
-        <span className="hidden sm:inline">
-          Press &quot;Space&quot; or &quot;Enter&quot; to login
-        </span>
-        <span className="sm:hidden">Tap to login</span>
+      <p className="text-lg italic text-muted-foreground absolute bottom-10">
+        Press &quot;Space&quot; or &quot;Enter&quot; to login
       </p>
     </div>
   );
@@ -141,48 +128,38 @@ export function PasswordScreen({ onLogin }: { onLogin?: () => void }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const handleSubmit = () => {
-    if (password === "sanku") {
-      onLogin?.();
-    } else {
-      setError(true);
-      setPassword("");
-      setTimeout(() => setError(false), 500);
-    }
-  };
-
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleSubmit();
+      if (password === "sanku") {
+        onLogin?.();
+      } else {
+        setError(true);
+        setPassword("");
+        setTimeout(() => setError(false), 500);
+      }
     }
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center text-white relative px-4">
-      <div className="flex flex-col items-center space-y-4 w-full max-w-xs">
-        <CircleUser className="size-16 sm:size-24 opacity-90" />
-        <span className="text-xl sm:text-2xl font-semibold">sanku</span>
+    <div className="h-full w-full flex items-center justify-center text-white relative">
+      <div className="flex flex-col items-center space-y-4">
+        <CircleUser className="size-24 opacity-90" />
+        <span className="text-2xl font-semibold">sanku</span>
         <Input
           type="password"
           autoFocus
           className={cn(
-            "p-2 transition-all w-full",
+            "p-2 transition-all",
             error && "border-red-500 animate-shake"
           )}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onKeyPress={handleKeyPress}
         />
-        <button
-          onClick={handleSubmit}
-          className="w-full py-2 px-4 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors sm:hidden"
-        >
-          Unlock
-        </button>
-        <p className="text-sm text-primary/60 mt-3 font-light italic hidden sm:block">
+        <p className="text-sm text-primary/60 mt-3 font-light italic">
           Press Enter to unlock
         </p>
-        <p className="text-sm text-primary/60 absolute bottom-10 font-light italic">
+        <p className="text-sm text-primary/60 fixed bottom-0 mb-10 font-light italic">
           password: sanku
         </p>
       </div>

@@ -64,7 +64,7 @@ export default function StatusBar() {
   return (
     <div className="bg-card/95 backdrop-blur-xs flex justify-between items-center p-2 mx-1 border rounded shadow-xl text-xs gap-2 overflow-x-auto">
       <div
-        className="flex items-center gap-2 relative flex-shrink-0"
+        className="flex items-center gap-2 relative"
         style={
           {
             "--workspace-index": active - 1,
@@ -72,7 +72,7 @@ export default function StatusBar() {
         }
       >
         <div
-          className="absolute inset-y-0 w-9 bg-primary/20 rounded-md transition-transform duration-300 ease-out hidden sm:block"
+          className="absolute inset-y-0 w-9 bg-primary/20 rounded-md transition-transform duration-300 ease-out"
           style={{
             transform: `translateX(calc(var(--workspace-index) * 2.75rem))`,
           }}
@@ -82,7 +82,7 @@ export default function StatusBar() {
           <button
             key={num}
             onClick={() => setActive(num)}
-            className={`relative z-10 w-9 py-1 cursor-pointer rounded-md transition-colors duration-200 hidden sm:block ${
+            className={`relative z-10 w-9 py-1 cursor-pointer rounded-md transition-colors duration-200 ${
               num === active
                 ? "text-primary font-medium"
                 : "text-muted-foreground hover:text-foreground"
@@ -91,13 +91,8 @@ export default function StatusBar() {
             {num}
           </button>
         ))}
-
-        <button className="relative z-10 w-9 py-1 cursor-pointer rounded-md sm:hidden text-primary font-medium">
-          {active}
-        </button>
       </div>
-
-      <div className="flex items-center space-x-1 flex-shrink-0">
+      <div className="flex items-center space-x-1">
         <div className="p-1 hover:bg-muted rounded flex items-center">
           <Dialog>
             <DialogTrigger>
@@ -126,14 +121,14 @@ export default function StatusBar() {
         </div>
       </div>
 
-      <div className="flex items-center gap-1 text-muted-foreground flex-shrink-0">
+      <div className="flex items-center gap-1 text-muted-foreground">
         {actions.map(({ value, icon: Icon, wrapper }, idx) => {
           const content = (
             <div
               className={`flex items-center gap-1 hover:text-foreground transition-colors duration-200 cursor-pointer`}
             >
               <Icon className="size-4" />
-              <span className="hidden md:inline">{value}</span>
+              <span>{value}</span>
             </div>
           );
 
