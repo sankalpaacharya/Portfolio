@@ -11,6 +11,7 @@ import {
   DockviewReact,
   DockviewReadyEvent,
   IDockviewPanelProps,
+  IDockviewPanel,
   DockviewTheme,
 } from "dockview";
 import "dockview/dist/styles/dockview.css";
@@ -69,8 +70,8 @@ export default function Page() {
     id: string,
     component: string,
     title: string,
-    params: any,
-    referencePanel?: any,
+    params: Record<string, unknown>,
+    referencePanel?: IDockviewPanel,
     defaultDirection?: "below" | "right"
   ) => {
     const position = referencePanel
