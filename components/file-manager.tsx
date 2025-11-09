@@ -78,8 +78,7 @@ const data: FileNode[] = [
             render: (
               <div>
                 <iframe
-                  width="560"
-                  height="315"
+                  className="w-full h-100"
                   src="https://www.youtube.com/embed/SuxJXAgvEAo?si=cPMFJA3V9EP6TVXH"
                   title="YouTube video player"
                   frameBorder="0"
@@ -124,8 +123,7 @@ const data: FileNode[] = [
             render: (
               <div>
                 <iframe
-                  width="560"
-                  height="315"
+                  className="w-full h-100"
                   src="https://www.youtube.com/embed/f2gtGsR3yHo?si=f0LOQQhvIqpUr36h"
                   title="YouTube video player"
                   frameBorder="0"
@@ -168,8 +166,7 @@ const data: FileNode[] = [
             render: (
               <div>
                 <iframe
-                  width="560"
-                  height="315"
+                  className="h-100 w-full"
                   src="https://www.youtube.com/embed/mxJDRVZv_Z0?si=dqOIsAbtN6d1dVBh"
                   title="YouTube video player"
                   frameBorder="0"
