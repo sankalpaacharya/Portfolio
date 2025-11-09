@@ -35,7 +35,7 @@ const data: FileNode[] = [
                 <iframe
                   src="https://www.youtube.com/embed/DN1qRnZK-mw?si=HeXcE1zOjd1T22mx"
                   title="YouTube video player"
-                  className="w-full h-100"
+                  className="w-full h-40"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
@@ -77,7 +77,16 @@ const data: FileNode[] = [
             thumbnail: "/images/bloomivideo.png",
             render: (
               <div>
-                <video controls src={"video/bloomi.mp4"} />
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/SuxJXAgvEAo?si=cPMFJA3V9EP6TVXH"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
               </div>
             ),
           },
@@ -114,7 +123,16 @@ const data: FileNode[] = [
             thumbnail: "/images/weridevideo.png",
             render: (
               <div>
-                <video controls src={"video/weride.mp4"} />
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/f2gtGsR3yHo?si=f0LOQQhvIqpUr36h"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
               </div>
             ),
           },
@@ -150,7 +168,8 @@ const data: FileNode[] = [
             render: (
               <div>
                 <iframe
-                  className="w-full h-100"
+                  width="560"
+                  height="315"
                   src="https://www.youtube.com/embed/mxJDRVZv_Z0?si=dqOIsAbtN6d1dVBh"
                   title="YouTube video player"
                   frameBorder="0"
