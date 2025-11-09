@@ -198,18 +198,20 @@ export default function FileManager() {
     useFileManager(data);
 
   return (
-    <div className="h-full w-full backdrop-blur-xs flex flex-col p-6 space-y-6 bg-card/95 border rounded overflow-hidden">
-      <div className="flex items-center text-sm text-muted-foreground flex-shrink-0">
+    <div className="@container h-full w-full backdrop-blur-xs flex flex-col p-3 sm:p-4 md:p-6 space-y-3 sm:space-y-4 md:space-y-6 bg-card/95 border rounded overflow-hidden">
+      <div className="flex items-center text-xs @[400px]:text-sm text-muted-foreground flex-shrink-0 overflow-x-auto">
         {path.map((folder, index) => (
-          <div key={folder} className="flex items-center">
+          <div key={folder} className="flex items-center flex-shrink-0">
             <button
               onClick={() => goTo(index)}
-              className="text-muted-foreground focus:outline-none hover:underline"
+              className="text-muted-foreground focus:outline-none hover:underline whitespace-nowrap"
             >
               {folder}
             </button>
             {index < path.length - 1 && (
-              <span className="mx-2 text-muted-foreground">/</span>
+              <span className="mx-1 @[400px]:mx-2 text-muted-foreground">
+                /
+              </span>
             )}
           </div>
         ))}
@@ -219,13 +221,13 @@ export default function FileManager() {
         <button
           onClick={goBack}
           disabled={path.length <= 1}
-          className="px-3 py-1 border border-border rounded text-sm bg-muted/10 text-muted-foreground disabled:opacity-50"
+          className="px-2 @[400px]:px-3 py-1 border border-border rounded text-xs @[400px]:text-sm bg-muted/10 text-muted-foreground disabled:opacity-50"
         >
           ← Back
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 flex-1 overflow-auto content-start justify-items-start">
+      <div className="grid grid-cols-1 @[300px]:grid-cols-2 @[500px]:grid-cols-3 @[800px]:grid-cols-4 @[1000px]:grid-cols-5 gap-2 @[400px]:gap-3 @[600px]:gap-4 flex-1 overflow-auto content-start justify-items-start">
         {currentFolder.map((item) =>
           item.type === "folder" ? (
             <FolderItem
@@ -247,7 +249,7 @@ export default function FileManager() {
             </Link>
           ) : (
             <Dialog key={item.name}>
-              <DialogTrigger className="flex">
+              <DialogTrigger>
                 <FileItem
                   name={item.name}
                   src={item.src}

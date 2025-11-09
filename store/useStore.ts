@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type AppType = 'terminal' | 'browser' | 'file-manager' | 'login-manager';
+export type AppType = 'terminal' | 'browser' | 'file-manager' | 'login-manager' | 'settings';
 
 interface AppState {
   [key: string]: boolean;

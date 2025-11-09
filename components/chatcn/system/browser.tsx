@@ -128,7 +128,7 @@ export default function Browser({
         </div>
 
         {/* Address Bar */}
-        <div className="flex-1 flex items-center gap-2 px-3 py-1.5 rounded-md bg-background border">
+        <div className="flex-1 flex items-center gap-2 px-3 py-1.5 bg-background border">
           <Globe className="w-4 h-4 text-muted-foreground flex-shrink-0" />
           <Input
             type="text"
@@ -148,7 +148,7 @@ export default function Browser({
       </div>
 
       {/* Browser Content */}
-      <div className="flex-1 relative bg-background">
+      <div className="flex-1 relative bg-betweenbackground">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10">
             <div className="flex flex-col items-center gap-2">

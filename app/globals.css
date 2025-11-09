@@ -171,3 +171,57 @@
     @apply bg-background text-foreground;
   }
 }
+
+.dockview-theme-minimal {
+  --dv-tabs-and-actions-container-background-color: var(--card);
+
+  /* Tabs — soft distinction only */
+  --dv-activegroup-visiblepanel-tab-background-color: color-mix(in oklch, var(--card) 95%, white 5%);
+  --dv-activegroup-visiblepanel-tab-color: var(--foreground);
+
+  --dv-inactivegroup-visiblepanel-tab-background-color: color-mix(in oklch, var(--card) 90%, black 10%);
+  --dv-inactivegroup-visiblepanel-tab-color: var(--muted-foreground);
+
+  /* Subtle divider and border */
+  --dv-tab-divider-color: color-mix(in oklch, var(--border) 90%, transparent 10%);
+  --dv-separator-border: 1px solid color-mix(in oklch, var(--border) 90%, transparent 10%);
+
+  /* Muted accent usage */
+  --dv-active-sash-color: color-mix(in oklch, var(--primary) 40%, var(--border) 60%);
+  --dv-drag-over-background-color: color-mix(in oklch, var(--primary) 10%, transparent 90%);
+  --dv-drag-over-border-color: color-mix(in oklch, var(--primary) 40%, var(--border) 60%);
+
+  /* Hover — minimal motion */
+  --dv-icon-hover-background-color: color-mix(in oklch, var(--muted) 20%, transparent 80%);
+
+  /* Depth — reduced shadow */
+  --dv-floating-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  /* Focus outline — almost invisible */
+  --dv-paneview-active-outline-color: color-mix(in oklch, var(--ring) 40%, transparent 60%);
+}
+
+.dark .dockview-theme-minimal {
+  --dv-tabs-and-actions-container-background-color: color-mix(in oklch, var(--card) 90%, black 10%);
+
+  --dv-activegroup-visiblepanel-tab-background-color: color-mix(in oklch, var(--card) 95%, white 5%);
+  --dv-activegroup-visiblepanel-tab-color: var(--foreground);
+
+  --dv-inactivegroup-visiblepanel-tab-background-color: color-mix(in oklch, var(--card) 85%, black 15%);
+  --dv-inactivegroup-visiblepanel-tab-color: var(--muted-foreground);
+
+  --dv-active-sash-color: color-mix(in oklch, var(--primary) 30%, var(--border) 70%);
+  --dv-floating-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.dockview-theme-minimal .dv-workspace {
+  background: url("/wallpapers/gamer.png") center/cover no-repeat fixed;
+  background-attachment: fixed;
+}
+
+.dv-view {
+  border-radius: 6px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 0;
+}
