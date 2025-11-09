@@ -47,9 +47,47 @@ const components = {
 
 export default function Page() {
   const [isLogin, setIsLogin] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { apps, closeApp } = useStore();
   const apiRef = useRef<DockviewReadyEvent | null>(null);
   const panelRefs = useRef<Map<string, boolean>>(new Map());
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const addPanelWithPosition = (
+    api: DockviewReadyEvent["api"],
+    id: string,
+    component: string,
+    title: string,
+    params: any,
+    referencePanel?: any,
+    defaultDirection?: "below" | "right"
+  ) => {
+    const position = referencePanel
+      ? {
+          referencePanel,
+          direction: isMobile ? ("within" as const) : defaultDirection,
+        }
+      : undefined;
+
+    api.addPanel({
+      id,
+      component,
+      title,
+      params,
+      position,
+    });
+  };
 
   const onReady = (event: DockviewReadyEvent) => {
     apiRef.current = event;
@@ -83,15 +121,15 @@ export default function Page() {
 
     if (apps.browser) {
       const terminalPanel = event.api.getPanel("panel_terminal");
-      event.api.addPanel({
-        id: "panel_browser",
-        component: "browser",
-        title: "Browser",
-        params: { url: "https://www.google.com/webhp?igu=1" },
-        position: terminalPanel
-          ? { referencePanel: terminalPanel, direction: "below" }
-          : undefined,
-      });
+      addPanelWithPosition(
+        event.api,
+        "panel_browser",
+        "browser",
+        "Browser",
+        { url: "https://www.google.com/webhp?igu=1" },
+        terminalPanel,
+        "below"
+      );
       panelRefs.current.set("browser", true);
     }
 
@@ -100,15 +138,15 @@ export default function Page() {
       const terminalPanel = event.api.getPanel("panel_terminal");
       const referencePanel = browserPanel || terminalPanel;
 
-      event.api.addPanel({
-        id: "panel_file-manager",
-        component: "file-manager",
-        title: "File Manager",
-        params: {},
-        position: referencePanel
-          ? { referencePanel, direction: "right" }
-          : undefined,
-      });
+      addPanelWithPosition(
+        event.api,
+        "panel_file-manager",
+        "file-manager",
+        "File Manager",
+        {},
+        referencePanel,
+        "right"
+      );
       panelRefs.current.set("file-manager", true);
     }
   };
@@ -142,7 +180,7 @@ export default function Page() {
               ? { url: "https://www.google.com/webhp?igu=1" }
               : {},
           position: referencePanel
-            ? { referencePanel, direction: "right" }
+            ? { referencePanel, direction: isMobile ? "center" : "right" }
             : undefined,
         });
         panelRefs.current.set(appType, true);
@@ -155,7 +193,7 @@ export default function Page() {
         }
       }
     });
-  }, [isLogin, apps]);
+  }, [isLogin, apps, isMobile]);
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">

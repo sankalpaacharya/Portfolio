@@ -42,6 +42,12 @@ export function LoginManager({
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [active]);
 
+  const handleScreenTap = () => {
+    if (!active) {
+      setActive(true);
+    }
+  };
+
   if (!mounted) return null;
 
   const content = (
@@ -51,6 +57,7 @@ export function LoginManager({
         isVisible ? "opacity-100" : "opacity-0"
       )}
       style={{ backgroundImage: `url(${wallpaper})` }}
+      onClick={handleScreenTap}
     >
       <div
         className={cn(
@@ -118,7 +125,10 @@ export function FirstScreen() {
         <div className="text-lg">{formatDate(currentTime)}</div>
       </div>
       <p className="text-lg italic text-muted-foreground absolute bottom-10">
-        Press &quot;Space&quot; or &quot;Enter&quot; to login
+        <span className="hidden sm:inline">
+          Press &quot;Space&quot; or &quot;Enter&quot; to login
+        </span>
+        <span className="sm:hidden">Tap to login</span>
       </p>
     </div>
   );
@@ -128,15 +138,19 @@ export function PasswordScreen({ onLogin }: { onLogin?: () => void }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
+  const handleSubmit = () => {
+    if (password === "sanku") {
+      onLogin?.();
+    } else {
+      setError(true);
+      setPassword("");
+      setTimeout(() => setError(false), 500);
+    }
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (password === "sanku") {
-        onLogin?.();
-      } else {
-        setError(true);
-        setPassword("");
-        setTimeout(() => setError(false), 500);
-      }
+      handleSubmit();
     }
   };
 
@@ -156,7 +170,13 @@ export function PasswordScreen({ onLogin }: { onLogin?: () => void }) {
           onChange={(e) => setPassword(e.target.value)}
           onKeyPress={handleKeyPress}
         />
-        <p className="text-sm text-primary/60 mt-3 font-light italic">
+        <button
+          onClick={handleSubmit}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors sm:hidden"
+        >
+          Unlock
+        </button>
+        <p className="text-sm text-primary/60 mt-3 font-light italic hidden sm:block">
           Press Enter to unlock
         </p>
         <p className="text-sm text-primary/60 fixed bottom-0 mb-10 font-light italic">

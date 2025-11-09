@@ -62,9 +62,10 @@ export default function StatusBar() {
   ];
 
   return (
-    <div className="bg-card/95 backdrop-blur-xs flex justify-between items-center p-2 border rounded shadow-xl text-xs gap-2 overflow-x-auto">
+    <div className="bg-card/95 backdrop-blur-xs flex justify-between items-center p-2 border rounded shadow-xl text-xs gap-1 sm:gap-2 overflow-x-auto">
+      {/* Workspace Numbers - Show only 1 on mobile, all on desktop */}
       <div
-        className="flex items-center gap-2 relative"
+        className="flex items-center gap-1 sm:gap-2 relative"
         style={
           {
             "--workspace-index": active - 1,
@@ -72,9 +73,9 @@ export default function StatusBar() {
         }
       >
         <div
-          className="absolute inset-y-0 w-9 bg-primary/20 rounded-md transition-transform duration-300 ease-out"
+          className="absolute inset-y-0 w-7 sm:w-9 bg-primary/20 rounded-md transition-transform duration-300 ease-out hidden sm:block"
           style={{
-            transform: `translateX(calc(var(--workspace-index) * 2.75rem))`,
+            transform: `translateX(calc(var(--workspace-index) * (1.75rem + 0.25rem)))`,
           }}
         />
 
@@ -82,22 +83,24 @@ export default function StatusBar() {
           <button
             key={num}
             onClick={() => setActive(num)}
-            className={`relative z-10 w-9 py-1 cursor-pointer rounded-md transition-colors duration-200 ${
+            className={`relative z-10 w-7 sm:w-9 py-1 cursor-pointer rounded-md transition-colors duration-200 text-[10px] sm:text-xs ${
               num === active
                 ? "text-primary font-medium"
                 : "text-muted-foreground hover:text-foreground"
-            }`}
+            } ${num === 1 ? "" : "hidden sm:block"}`}
           >
             {num}
           </button>
         ))}
       </div>
-      <div className="flex items-center space-x-1">
-        <div className="p-1 hover:bg-muted rounded flex items-center">
+
+      {/* Settings and Game Icons */}
+      <div className="flex items-center space-x-0.5 sm:space-x-1">
+        <div className="p-0.5 sm:p-1 hover:bg-muted rounded flex items-center">
           <Dialog>
             <DialogTrigger>
-              <div className="p-1 hover:bg-muted rounded">
-                <SettingsIcon className="size-4" />
+              <div className="p-0.5 sm:p-1 hover:bg-muted rounded">
+                <SettingsIcon className="size-3.5 sm:size-4" />
               </div>
             </DialogTrigger>
             <DialogContent>
@@ -106,11 +109,11 @@ export default function StatusBar() {
             </DialogContent>
           </Dialog>
         </div>
-        <div className="p-1 hover:bg-muted rounded flex items-center">
+        <div className="p-0.5 sm:p-1 hover:bg-muted rounded flex items-center">
           <Dialog>
             <DialogTrigger>
-              <div className="p-1 hover:bg-muted rounded">
-                <Gamepad2 className="size-4" />
+              <div className="p-0.5 sm:p-1 hover:bg-muted rounded">
+                <Gamepad2 className="size-3.5 sm:size-4" />
               </div>
             </DialogTrigger>
             <DialogContent>
@@ -121,21 +124,37 @@ export default function StatusBar() {
         </div>
       </div>
 
-      <div className="flex items-center gap-1 text-muted-foreground">
+      {/* Status Icons - Hide some on mobile */}
+      <div className="flex items-center gap-0.5 sm:gap-1 text-muted-foreground">
         {actions.map(({ value, icon: Icon, wrapper }, idx) => {
+          // Hide bluetooth and wifi on very small screens
+          const isHiddenOnMobile = idx === 2 || idx === 3 || idx === 4; // Wifi, BT, and Time
+          const isHiddenOnSmall = idx === 1; // Battery on small screens
+
+          // Hide value text on mobile for brightness (idx 0) and date (idx 5)
+          const hideValueOnMobile = idx === 0 || idx === 5;
+
           const content = (
             <div
-              className={`flex items-center gap-1 hover:text-foreground transition-colors duration-200 cursor-pointer`}
+              className={`flex items-center gap-0.5 sm:gap-1 hover:text-foreground transition-colors duration-200 cursor-pointer`}
             >
-              <Icon className="size-4" />
-              <span>{value}</span>
+              <Icon className="size-3.5 sm:size-4" />
+              <span
+                className={`text-[10px] sm:text-xs ${
+                  hideValueOnMobile ? "hidden sm:inline" : ""
+                }`}
+              >
+                {value}
+              </span>
             </div>
           );
 
           return (
             <div
               key={idx}
-              className="flex items-center hover:bg-muted px-2 py-1 rounded"
+              className={`flex items-center hover:bg-muted px-1 sm:px-2 py-0.5 sm:py-1 rounded ${
+                isHiddenOnMobile ? "hidden sm:flex" : ""
+              } ${isHiddenOnSmall ? "hidden md:flex" : ""}`}
             >
               {wrapper ? wrapper(content) : content}
             </div>

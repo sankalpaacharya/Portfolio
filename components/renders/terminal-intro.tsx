@@ -11,13 +11,13 @@ export function TerminalIntro() {
   ];
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-col md:flex-row">
       <img
         src={"/wallpapers/dark.png"}
-        className="opacity-70 w-50 h-50 object-cover border"
+        className="opacity-70 md:w-50 h-50 object-cover border w-full"
       />
 
-      <div>
+      <div className="hidden md:block">
         <p className="text-primary">sanku@ubuntu</p>
         <p>--------------</p>
         {systemInfo.map((info) => (

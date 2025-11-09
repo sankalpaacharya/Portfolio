@@ -288,7 +288,9 @@ export default function FileManager() {
                   tabIndex={0}
                 />
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent
+                className={"lg:max-w-5xl-lg overflow-y-scroll max-h-screen"}
+              >
                 <DialogTitle>{item.name}</DialogTitle>
                 {item.render ? item.render : <p>No content to render</p>}
               </DialogContent>
