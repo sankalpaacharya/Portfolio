@@ -20,9 +20,9 @@ interface StoreState {
 
 export const useStore = create<StoreState>()((set, get) => ({
   apps: {
-    terminal: true,
+    terminal: false,
     browser: false,
-    'file-manager': true,
+    'file-manager': false,
     'login-manager': true,
   },
   wallpaper: '/wallpapers/gamer.png',

@@ -225,3 +225,54 @@
   border-bottom-right-radius: 0;
   padding: 0;
 }
+
+
+/* === Global Scrollbar Styling === */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-foreground) var(--card);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: color-mix(in oklch, var(--card) 95%, var(--border) 5%);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--muted-foreground) 60%, var(--card) 40%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklch, var(--muted-foreground) 80%, var(--card) 20%);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* === Dark Mode Refinements === */
+.dark * {
+  scrollbar-color: var(--muted-foreground) var(--background);
+}
+
+.dark *::-webkit-scrollbar-track {
+  background: color-mix(in oklch, var(--background) 95%, var(--border) 5%);
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--muted-foreground) 50%, var(--background) 50%);
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklch, var(--muted-foreground) 70%, var(--background) 30%);
+}
