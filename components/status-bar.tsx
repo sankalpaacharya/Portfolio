@@ -75,7 +75,7 @@ export default function StatusBar() {
         <div
           className="absolute inset-y-0 w-7 sm:w-9 bg-primary/20 rounded-md transition-transform duration-300 ease-out hidden sm:block"
           style={{
-            transform: `translateX(calc(var(--workspace-index) * (1.75rem + 0.25rem)))`,
+            transform: `translateX(calc(var(--workspace-index) * (2.25rem + 0.5rem)))`,
           }}
         />
 
@@ -124,14 +124,11 @@ export default function StatusBar() {
         </div>
       </div>
 
-      {/* Status Icons - Hide some on mobile */}
       <div className="flex items-center gap-0.5 sm:gap-1 text-muted-foreground">
         {actions.map(({ value, icon: Icon, wrapper }, idx) => {
-          // Hide bluetooth and wifi on very small screens
-          const isHiddenOnMobile = idx === 2 || idx === 3 || idx === 4; // Wifi, BT, and Time
-          const isHiddenOnSmall = idx === 1; // Battery on small screens
+          const isHiddenOnMobile = idx === 2 || idx === 3 || idx === 4;
+          const isHiddenOnSmall = idx === 1;
 
-          // Hide value text on mobile for brightness (idx 0) and date (idx 5)
           const hideValueOnMobile = idx === 0 || idx === 5;
 
           const content = (

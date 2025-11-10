@@ -20,6 +20,16 @@ interface Application {
 }
 
 const applications: Record<string, Application[]> = {
+  System: [
+    {
+      name: "Terminal",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Terminalicon2.png",
+    },
+    {
+      name: "File Manager",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/7/74/Folder-front-gradient.png",
+    },
+  ],
   Browsers: [
     {
       name: "Firefox",
@@ -96,9 +106,21 @@ export function ApplicationManager() {
       window.open(app.url, "_blank");
       setOpen(false);
     } else {
-      openApp("browser");
+      // Map app names to AppType
+      const appTypeMap: Record<
+        string,
+        "terminal" | "browser" | "file-manager"
+      > = {
+        Terminal: "terminal",
+        "File Manager": "file-manager",
+        Firefox: "browser",
+        Chrome: "browser",
+      };
+
+      const appType = appTypeMap[app.name] || "browser";
+      openApp(appType);
+      setOpen(false);
     }
-    setOpen(false);
   };
 
   return (
@@ -119,7 +141,7 @@ export function ApplicationManager() {
                     className="cursor-pointer"
                   >
                     <div className="flex items-center gap-3 w-full">
-                      <div className="relative w-6 h-6 flex-shrink-0">
+                      <div className="relative w-6 h-6 shrink-0">
                         <img
                           src={app.icon}
                           alt={app.name}
