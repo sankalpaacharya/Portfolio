@@ -2,7 +2,7 @@
 
 Linux i3 tiling like portfolio site
 
-![image](https://i.ibb.co/SXMdmdkM/image.png)
+<img src="https://i.ibb.co/SXMdmdkM/image.png"/>
 
 ## Features
 
