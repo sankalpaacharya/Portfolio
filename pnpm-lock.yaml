@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@posthog/react':
+        specifier: ^1.4.0
+        version: 1.4.0(@types/react@19.2.2)(posthog-js@1.295.0)(react@19.2.0)
       '@radix-ui/react-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -439,6 +442,16 @@ packages:
 
   '@posthog/core@1.5.2':
     resolution: {integrity: sha512-iedUP3EnOPPxTA2VaIrsrd29lSZnUV+ZrMnvY56timRVeZAXoYCkmjfIs3KBAsF8OUT5h1GXLSkoQdrV0r31OQ==}
+
+  '@posthog/react@1.4.0':
+    resolution: {integrity: sha512-xzPeZ753fQ0deZzdgY/0YavZvNpmdaxUzLYJYu5XjONNcZ8PwJnNLEK+7D/Cj8UM4Q8nWI7QC5mjum0uLWa4FA==}
+    peerDependencies:
+      '@types/react': '>=16.8.0'
+      posthog-js: '>=1.257.2'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@radix-ui/number@1.1.1':
     resolution: {integrity: sha512-MkKCwxlXTgz6CFoJx3pCwn07GKp36+aZyu/u2Ln2VrA5DcdyCZkASEDBTd8x5whTQQL5CiYf4prXKLcgQdv29g==}
@@ -2711,6 +2724,13 @@ snapshots:
   '@posthog/core@1.5.2':
     dependencies:
       cross-spawn: 7.0.6
+
+  '@posthog/react@1.4.0(@types/react@19.2.2)(posthog-js@1.295.0)(react@19.2.0)':
+    dependencies:
+      posthog-js: 1.295.0
+      react: 19.2.0
+    optionalDependencies:
+      '@types/react': 19.2.2
 
   '@radix-ui/number@1.1.1': {}
 
