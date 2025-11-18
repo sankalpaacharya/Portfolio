@@ -174,7 +174,7 @@ export default function SnakeGame() {
   };
 
   return (
-    <Card className="w-fit mx-auto">
+    <Card className="">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>Snake Game</span>

@@ -24,6 +24,8 @@
     "lucide-react": "^0.544.0",
     "next": "15.3.1",
     "next-themes": "^0.4.6",
+    "posthog-js": "^1.295.0",
+    "posthog-node": "^5.11.2",
     "react": "^19.0.0",
     "react-card-flip": "^1.2.3",
     "react-day-picker": "^9.11.1",
