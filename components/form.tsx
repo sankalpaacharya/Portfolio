@@ -37,10 +37,14 @@ export default function ContactForm({
     setResult("");
 
     const formData = new FormData(event.currentTarget);
-    formData.append("access_key", "bfbc9bbf-12d9-4608-bc47-69f2f893660f");
     
-    // Web3Forms expects 'h-captcha-response' for hCaptcha
-    formData.append("h-captcha-response", captchaToken);
+    // Remove any existing h-captcha-response fields to avoid duplicates
+    formData.delete("h-captcha-response");
+    formData.delete("g-recaptcha-response");
+    
+    // Add required fields
+    formData.set("access_key", "bfbc9bbf-12d9-4608-bc47-69f2f893660f");
+    formData.set("h-captcha-response", captchaToken);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -55,6 +59,10 @@ export default function ContactForm({
         setResult("Message sent successfully! 🎉");
         (event.target as HTMLFormElement).reset();
         setCaptchaToken("");
+        // Reset captcha widget
+        if (captchaRef.current) {
+          captchaRef.current.resetCaptcha();
+        }
       } else {
         setResult(data.message || "Failed to send message. Please try again.");
       }
@@ -107,13 +115,15 @@ export default function ContactForm({
       </div>
 
       <div className="flex justify-center">
-        <HCaptcha
-          ref={captchaRef}
-          sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-          onVerify={onHCaptchaChange}
-          size={captchaSize}
-          theme="dark"
-        />
+        <div className="hcaptcha-container">
+          <HCaptcha
+            ref={captchaRef}
+            sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+            onVerify={onHCaptchaChange}
+            size={captchaSize}
+            theme="dark"
+          />
+        </div>
       </div>
 
       <Button 
