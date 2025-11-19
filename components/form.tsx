@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -18,18 +18,28 @@ export default function ContactForm({
   const [result, setResult] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const captchaRef = useRef<HCaptcha | null>(null);
 
   const onHCaptchaChange = (token: string) => {
     setCaptchaToken(token);
+    console.log("Captcha token received:", token ? "✓" : "✗");
   };
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    if (!captchaToken) {
+      setResult("Please complete the captcha verification.");
+      return;
+    }
+
     setIsSubmitting(true);
     setResult("");
 
     const formData = new FormData(event.currentTarget);
     formData.append("access_key", "bfbc9bbf-12d9-4608-bc47-69f2f893660f");
+    
+    // Web3Forms expects 'h-captcha-response' for hCaptcha
     formData.append("h-captcha-response", captchaToken);
 
     try {
@@ -39,15 +49,17 @@ export default function ContactForm({
       });
 
       const data = await response.json();
-      console.log("this is fucking test",data);
-      setResult(data.success ? "Message sent successfully! 🎉" : "Failed to send message. Please try again.");
+      console.log("Response data:", data);
       
       if (data.success) {
+        setResult("Message sent successfully! 🎉");
         (event.target as HTMLFormElement).reset();
         setCaptchaToken("");
+      } else {
+        setResult(data.message || "Failed to send message. Please try again.");
       }
     } catch (error) {
-        console.log(error);
+      console.log("Error:", error);
       setResult("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -96,10 +108,11 @@ export default function ContactForm({
 
       <div className="flex justify-center">
         <HCaptcha
+          ref={captchaRef}
           sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-          reCaptchaCompat={false}
           onVerify={onHCaptchaChange}
           size={captchaSize}
+          theme="dark"
         />
       </div>
 
