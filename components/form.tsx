@@ -47,6 +47,7 @@ export default function ContactForm({
         setCaptchaToken("");
       }
     } catch (error) {
+        console.log(error);
       setResult("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
