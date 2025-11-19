@@ -8,6 +8,7 @@ import {
   Calendar,
   Settings as SettingsIcon,
   Gamepad2,
+  MessageSquare,
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
@@ -17,6 +18,7 @@ import { BrightnessSetting } from "./settings/brightness";
 import { DiamondGame } from "./games/diamond";
 import { useStore } from "@/store/useStore";
 import CalendarCard from "./settings/calendar";
+import ContactForm from "./form";
 
 type ActionItem = {
   value: string;
@@ -94,7 +96,7 @@ export default function StatusBar() {
         ))}
       </div>
 
-      {/* Settings and Game Icons */}
+      {/* Settings, Message, and Game Icons */}
       <div className="flex items-center space-x-0.5 sm:space-x-1">
         <div className="p-0.5 sm:p-1 hover:bg-muted rounded flex items-center">
           <Dialog>
@@ -106,6 +108,19 @@ export default function StatusBar() {
             <DialogContent>
               <DialogTitle>Settings</DialogTitle>
               <SettingsContent />
+            </DialogContent>
+          </Dialog>
+        </div>
+        <div className="p-0.5 sm:p-1 hover:bg-muted rounded flex items-center">
+          <Dialog>
+            <DialogTrigger>
+              <div className="p-0.5 sm:p-1 hover:bg-muted rounded">
+                <MessageSquare className="size-3.5 sm:size-4" />
+              </div>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogTitle>Send Anonymous Message to Sanku</DialogTitle>
+              <ContactForm />
             </DialogContent>
           </Dialog>
         </div>
